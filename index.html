@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>MessageBox — Private Message</title>
-
   <meta name="theme-color" content="#080b1a">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,10 +19,10 @@
 
 <body>
 
-  <!-- Background decoration -->
   <div class="bg-glow glow-one"></div>
   <div class="bg-glow glow-two"></div>
   <div class="bg-glow glow-three"></div>
+
 
   <!-- =========================
        WELCOME PAGE
@@ -119,7 +118,6 @@
         </div>
       </div>
 
-
       <div class="section-heading">
 
         <div class="mini-label">
@@ -134,10 +132,9 @@
 
       </div>
 
-
       <div class="category-list">
 
-        <!-- Fun SMS Bombing UI -->
+        <!-- FUN MODE -->
         <button
           class="category-option"
           type="button"
@@ -160,7 +157,7 @@
         </button>
 
 
-        <!-- Custom message -->
+        <!-- CUSTOM MESSAGE -->
         <button
           class="category-option"
           type="button"
@@ -183,7 +180,6 @@
         </button>
 
       </div>
-
 
       <div class="secure-note">
         🔒 Your information is handled securely
@@ -210,7 +206,6 @@
           <div class="brand-subtitle">Private Message</div>
         </div>
       </div>
-
 
       <div class="section-heading">
 
@@ -308,7 +303,6 @@
         ← Back
       </button>
 
-
       <div class="secure-note">
         🔒 Your information is handled securely
       </div>
@@ -334,7 +328,6 @@
           <div class="brand-subtitle">Write your message</div>
         </div>
       </div>
-
 
       <div class="section-heading">
 
@@ -407,7 +400,7 @@
 
   <!-- =========================
        FUN PAGE
-       NO REAL SMS IS SENT
+       NO REAL SMS
   ========================== -->
 
   <main id="funPage" class="page">
@@ -415,12 +408,21 @@
     <section class="app-card">
 
       <div class="top-brand">
-        <div class="brand-icon small">💣</div>
+
+        <div class="brand-icon small">
+          💣
+        </div>
 
         <div>
-          <div class="brand-name">Fun Mode</div>
-          <div class="brand-subtitle">Music experience</div>
+          <div class="brand-name">
+            Fun Mode
+          </div>
+
+          <div class="brand-subtitle">
+            Music experience
+          </div>
         </div>
+
       </div>
 
 
@@ -430,15 +432,19 @@
           JUST FOR FUN 🤣
         </div>
 
-        <h2>Choose your fun level</h2>
+        <h2>
+          Choose your fun level
+        </h2>
 
         <p>
-          Select an option below. No SMS will be sent.
-          This is only a fun music experience. 🎵
+          Select an amount and enter a valid phone number.
+          No SMS will be sent — this is only a music experience. 🎵
         </p>
 
       </div>
 
+
+      <!-- AMOUNT -->
 
       <div class="form-group">
 
@@ -468,13 +474,41 @@
       </div>
 
 
+      <!-- =========================
+           NEW NUMBER INPUT
+      ========================== -->
+
+      <div class="form-group">
+
+        <label for="funPhone">
+          Phone number
+        </label>
+
+        <input
+          id="funPhone"
+          type="tel"
+          inputmode="numeric"
+          autocomplete="off"
+          maxlength="11"
+          placeholder="Enter 11 digit number"
+        >
+
+        <p id="funPhoneError" class="error"></p>
+
+      </div>
+
+
+      <!-- START -->
+
       <button
         class="primary-btn"
         type="button"
         onclick="startFunExperience()"
       >
 
-        <span>Start Fun Experience</span>
+        <span>
+          Start Fun Experience
+        </span>
 
         <span class="btn-arrow">
           🎵
@@ -563,7 +597,8 @@
   </main>
 
 
-  <!-- Your own music file -->
+  <!-- MUSIC FILE -->
+
   <audio
     id="music1"
     src="ssstik.io_1785264460697.mp3"
@@ -586,4 +621,4 @@
   <script src="script.js"></script>
 
 </body>
-</html>
+        </html>
