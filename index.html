@@ -1,17 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Music Website</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Send Your Message</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <h1>My Music Website</h1>
-  <audio controls>
-    <source src="music/sad-song.mp3" type="audio/mpeg">
-    Your browser does not support audio.
-  </audio>
-  <script src="script.js"></script>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h1>💌 Send Your Message</h1>
+
+            <p class="subtitle">
+                Enter your number and write a custom message.
+            </p>
+
+            <!-- Number -->
+            <label for="number">📱 Your Number</label>
+
+            <input
+                type="tel"
+                id="number"
+                placeholder="Enter your number"
+                autocomplete="off"
+            >
+
+            <!-- Message -->
+            <label for="message">💬 Your Custom Message</label>
+
+            <textarea
+                id="message"
+                placeholder="Write your message..."
+                rows="5"
+            ></textarea>
+
+            <!-- Submit -->
+            <button id="submitBtn">
+                Submit 💌
+            </button>
+
+            <!-- Status -->
+            <p id="status"></p>
+
+        </div>
+
+    </div>
+
+    <!-- Your own music -->
+    <audio id="sadMusic" preload="auto">
+        <source src="music/sad-song.mp3" type="audio/mpeg">
+        Your browser does not support audio.
+    </audio>
+
+    <script src="script.js"></script>
+
 </body>
-</html>
+              </html>
