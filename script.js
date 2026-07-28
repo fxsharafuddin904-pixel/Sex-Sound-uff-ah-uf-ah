@@ -11,30 +11,47 @@ const pages = [
   "musicPage"
 ];
 
+
 function showPage(id) {
+
   pages.forEach(page => {
+
     const el = document.getElementById(page);
-    if (el) el.classList.remove("active");
+
+    if (el) {
+      el.classList.remove("active");
+    }
+
   });
 
-  const target = document.getElementById(id);
+
+  const target =
+    document.getElementById(id);
+
 
   if (target) {
+
     target.classList.add("active");
+
     window.scrollTo({
       top: 0,
       behavior: "smooth"
     });
+
   }
+
 }
+
 
 function showCategoryPage() {
   showPage("categoryPage");
 }
 
+
 function showPhonePage() {
   showPage("phonePage");
 }
+
 
 function showFunPage() {
   showPage("funPage");
@@ -186,11 +203,12 @@ const countryRules = {
     max: 9,
     pattern: /^[67]\d{8}$/
   }
+
 };
 
 
 // ===============================
-// SHAKE
+// SHAKE ANIMATION
 // ===============================
 
 function shake(element) {
@@ -202,6 +220,7 @@ function shake(element) {
   void element.offsetWidth;
 
   element.classList.add("shake");
+
 }
 
 
@@ -211,41 +230,56 @@ function shake(element) {
 
 function normalizePhone(value, rule) {
 
-  let number = value.replace(/\D/g, "");
+  let number =
+    value.replace(/\D/g, "");
+
 
   // 00XXXXXXXX
   if (number.startsWith("00")) {
-    number = number.substring(2);
+
+    number =
+      number.substring(2);
+
   }
 
-  // Bangladesh/local style
+
+  // Already local number
   if (number.startsWith("0")) {
+
     return number;
+
   }
 
-  // International country code
+
+  // Country code format
   if (number.startsWith(rule.code)) {
 
     let local =
-      number.substring(rule.code.length);
+      number.substring(
+        rule.code.length
+      );
 
-    // Bangladesh needs 0
-    if (
-      rule.code === "880" &&
-      !local.startsWith("0")
-    ) {
-      local = "0" + local;
+
+    if (!local.startsWith("0")) {
+
+      local =
+        "0" + local;
+
     }
 
+
     return local;
+
   }
 
+
   return number;
+
 }
 
 
 // ===============================
-// CUSTOM MESSAGE PHONE
+// PHONE NEXT
 // ===============================
 
 function nextPhoneStep() {
@@ -259,12 +293,18 @@ function nextPhoneStep() {
   const error =
     document.getElementById("numberError");
 
-  if (!country || !phone || !error) return;
+
+  if (!country || !phone || !error) {
+    return;
+  }
+
 
   error.textContent = "";
 
+
   const selectedCountry =
     country.value;
+
 
   const rawNumber =
     phone.value.trim();
@@ -278,6 +318,7 @@ function nextPhoneStep() {
     shake(country);
 
     return;
+
   }
 
 
@@ -289,6 +330,7 @@ function nextPhoneStep() {
     shake(phone);
 
     return;
+
   }
 
 
@@ -302,12 +344,18 @@ function nextPhoneStep() {
       "Phone validation is unavailable.";
 
     return;
+
   }
 
 
   const normalized =
-    normalizePhone(rawNumber, rule);
+    normalizePhone(
+      rawNumber,
+      rule
+    );
 
+
+  // Check number length
 
   if (
     normalized.length < rule.min ||
@@ -320,10 +368,15 @@ function nextPhoneStep() {
     shake(phone);
 
     return;
+
   }
 
 
-  if (!rule.pattern.test(normalized)) {
+  // Check country format
+
+  if (
+    !rule.pattern.test(normalized)
+  ) {
 
     error.textContent =
       "Please enter a valid phone number.";
@@ -331,13 +384,18 @@ function nextPhoneStep() {
     shake(phone);
 
     return;
+
   }
 
+
+  // Save locally only
+  // No SMS is sent.
 
   localStorage.setItem(
     "selectedCountry",
     selectedCountry
   );
+
 
   localStorage.setItem(
     "phoneNumber",
@@ -346,6 +404,7 @@ function nextPhoneStep() {
 
 
   showPage("messagePage");
+
 }
 
 
@@ -355,6 +414,7 @@ function nextPhoneStep() {
 
 const messageBox =
   document.getElementById("message");
+
 
 const messageCount =
   document.getElementById("messageCount");
@@ -369,13 +429,17 @@ if (messageBox) {
       const length =
         messageBox.value.length;
 
+
       if (messageCount) {
 
         messageCount.textContent =
           `${length} / 500`;
+
       }
+
     }
   );
+
 }
 
 
@@ -388,10 +452,15 @@ function submitCustomMessage() {
   const message =
     document.getElementById("message");
 
+
   const error =
     document.getElementById("messageError");
 
-  if (!message || !error) return;
+
+  if (!message || !error) {
+    return;
+  }
+
 
   error.textContent = "";
 
@@ -406,8 +475,12 @@ function submitCustomMessage() {
     message.focus();
 
     return;
+
   }
 
+
+  // Save locally only
+  // No SMS is sent.
 
   localStorage.setItem(
     "customMessage",
@@ -416,12 +489,12 @@ function submitCustomMessage() {
 
 
   showMusicPage();
+
 }
 
 
 // ===============================
-// FUN MODE
-// NO SMS IS SENT
+// BOMBING / FUN MODE
 // ===============================
 
 function startFunExperience() {
@@ -429,111 +502,201 @@ function startFunExperience() {
   const amount =
     document.getElementById("funAmount");
 
+
   const phone =
     document.getElementById("funPhone");
 
-  const error =
+
+  const amountError =
     document.getElementById("funError");
 
-  if (!amount || !phone || !error) return;
 
-  error.textContent = "";
+  const phoneError =
+    document.getElementById("funPhoneError");
 
 
-  // Amount validation
+  if (
+    !amount ||
+    !phone ||
+    !amountError ||
+    !phoneError
+  ) {
+    return;
+  }
+
+
+  amountError.textContent = "";
+  phoneError.textContent = "";
+
+
+  // =============================
+  // AMOUNT CHECK
+  // =============================
+
   if (!amount.value) {
 
-    error.textContent =
+    amountError.textContent =
       "Please select an amount.";
 
     shake(amount);
 
     return;
+
   }
 
 
-  // Phone validation
-  const rawPhone =
+  // =============================
+  // PHONE CHECK
+  // =============================
+
+  const rawNumber =
     phone.value.trim();
 
 
-  if (!rawPhone) {
+  if (!rawNumber) {
 
-    error.textContent =
+    phoneError.textContent =
       "Please enter a phone number.";
 
     shake(phone);
 
     return;
+
   }
 
 
-  // Only digits and optional +
+  /*
+    IMPORTANT:
+
+    This phone number is ONLY
+    validated locally.
+
+    No SMS will be sent.
+  */
+
   const cleaned =
-    rawPhone.replace(/[^\d+]/g, "");
+    rawNumber.replace(
+      /[^\d+]/g,
+      ""
+    );
 
 
-  // Bangladesh number validation
-  // Accepts:
-  // 017XXXXXXXX
-  // +88017XXXXXXXX
-  // 88017XXXXXXXX
-
-  let normalized = cleaned;
+  const digits =
+    cleaned.replace(/\D/g, "");
 
 
-  if (normalized.startsWith("+")) {
-    normalized =
-      normalized.substring(1);
-  }
+  /*
+    Generic international validation.
 
-
-  if (normalized.startsWith("880")) {
-
-    normalized =
-      normalized.substring(3);
-
-    if (!normalized.startsWith("0")) {
-      normalized =
-        "0" + normalized;
-    }
-  }
-
-
-  const bangladeshPattern =
-    /^01[3-9]\d{8}$/;
-
+    Accepts common phone formats
+    but rejects clearly invalid
+    short/long numbers.
+  */
 
   if (
-    !bangladeshPattern.test(normalized)
+    digits.length < 10 ||
+    digits.length > 15
   ) {
 
-    error.textContent =
-      "Please enter a valid Bangladesh phone number.";
+    phoneError.textContent =
+      "Please enter a valid phone number.";
 
     shake(phone);
 
     return;
+
   }
 
 
-  // Save locally
+  // =============================
+  // SAVE LOCALLY
+  // =============================
+
   localStorage.setItem(
     "funAmount",
     amount.value
   );
 
+
   localStorage.setItem(
     "funPhone",
-    normalized
+    digits
   );
 
 
-  // IMPORTANT:
-  // No SMS is sent.
-  // Only music experience starts.
+  // =============================
+  // MUSIC ONLY
+  // =============================
 
   showMusicPage();
+
+}
+
+
+// ===============================
+// FUN PHONE INPUT CLEANING
+// ===============================
+
+const funPhoneInput =
+  document.getElementById("funPhone");
+
+
+if (funPhoneInput) {
+
+  funPhoneInput.addEventListener(
+    "input",
+    () => {
+
+      funPhoneInput.value =
+        funPhoneInput.value.replace(
+          /[^\d+]/g,
+          ""
+        );
+
+
+      const error =
+        document.getElementById(
+          "funPhoneError"
+        );
+
+
+      if (error) {
+        error.textContent = "";
+      }
+
+    }
+  );
+
+}
+
+
+// ===============================
+// FUN AMOUNT CHANGE
+// ===============================
+
+const funAmountSelect =
+  document.getElementById("funAmount");
+
+
+if (funAmountSelect) {
+
+  funAmountSelect.addEventListener(
+    "change",
+    () => {
+
+      const error =
+        document.getElementById(
+          "funError"
+        );
+
+
+      if (error) {
+        error.textContent = "";
+      }
+
+    }
+  );
+
 }
 
 
@@ -545,9 +708,16 @@ function showMusicPage() {
 
   showPage("musicPage");
 
-  setTimeout(() => {
-    playMainMusic();
-  }, 350);
+
+  setTimeout(
+    () => {
+
+      playMainMusic();
+
+    },
+    350
+  );
+
 }
 
 
@@ -560,6 +730,7 @@ function playMainMusic() {
   const music =
     document.getElementById("music1");
 
+
   if (!music) return;
 
 
@@ -568,18 +739,21 @@ function playMainMusic() {
   music.currentTime = 0;
 
 
-  music.play().catch(() => {
+  music.play().catch(
+    () => {
 
-    console.log(
-      "Browser requires user interaction for audio."
-    );
+      console.log(
+        "Browser requires user interaction for audio."
+      );
 
-  });
+    }
+  );
+
 }
 
 
 // ===============================
-// 3× MUSIC MODE
+// MUSIC OFF / 3 COPY MODE
 // ===============================
 
 let musicTriggered = false;
@@ -587,7 +761,10 @@ let musicTriggered = false;
 
 function toggleMusic() {
 
-  if (musicTriggered) return;
+  if (musicTriggered) {
+    return;
+  }
+
 
   musicTriggered = true;
 
@@ -595,54 +772,74 @@ function toggleMusic() {
   const music1 =
     document.getElementById("music1");
 
+
   const music2 =
     document.getElementById("music2");
 
+
   const music3 =
     document.getElementById("music3");
+
 
   const button =
     document.getElementById("offBtn");
 
 
-  if (!music1 || !music2 || !music3) {
+  if (
+    !music1 ||
+    !music2 ||
+    !music3 ||
+    !button
+  ) {
     return;
   }
 
 
   // Stop first music
+
   music1.pause();
 
   music1.currentTime = 0;
 
 
   // Reset copies
+
   music2.pause();
   music3.pause();
+
 
   music2.currentTime = 0;
   music3.currentTime = 0;
 
 
-  // First copy
-  music2.play().catch(() => {});
+  // First copy starts
+
+  music2.play().catch(
+    () => {}
+  );
 
 
-  // Second copy after 1 second
-  setTimeout(() => {
+  // Second copy starts
+  // 1 second later
 
-    music3.play().catch(() => {});
+  setTimeout(
+    () => {
 
-  }, 1000);
+      music3.play().catch(
+        () => {}
+      );
+
+    },
+    1000
+  );
 
 
-  if (button) {
+  button.textContent =
+    "♫ 3× MUSIC PLAYING";
 
-    button.textContent =
-      "♫ 3× MUSIC PLAYING";
 
-    button.disabled = true;
-  }
+  button.disabled = true;
+
 }
 
 
@@ -666,44 +863,12 @@ if (phoneInput) {
           ""
         );
 
+
       const error =
         document.getElementById(
           "numberError"
         );
 
-      if (error) {
-        error.textContent = "";
-      }
-
-    }
-  );
-}
-
-
-// ===============================
-// FUN PHONE INPUT
-// ===============================
-
-const funPhoneInput =
-  document.getElementById("funPhone");
-
-
-if (funPhoneInput) {
-
-  funPhoneInput.addEventListener(
-    "input",
-    () => {
-
-      funPhoneInput.value =
-        funPhoneInput.value.replace(
-          /[^\d+]/g,
-          ""
-        );
-
-      const error =
-        document.getElementById(
-          "funError"
-        );
 
       if (error) {
         error.textContent = "";
@@ -711,6 +876,7 @@ if (funPhoneInput) {
 
     }
   );
+
 }
 
 
@@ -729,48 +895,27 @@ if (countrySelect) {
     () => {
 
       if (phoneInput) {
+
         phoneInput.value = "";
+
       }
+
 
       const error =
         document.getElementById(
           "numberError"
         );
 
+
       if (error) {
+
         error.textContent = "";
+
       }
 
     }
   );
-}
 
-
-// ===============================
-// FUN AMOUNT CHANGE
-// ===============================
-
-const funAmount =
-  document.getElementById("funAmount");
-
-
-if (funAmount) {
-
-  funAmount.addEventListener(
-    "change",
-    () => {
-
-      const error =
-        document.getElementById(
-          "funError"
-        );
-
-      if (error) {
-        error.textContent = "";
-      }
-
-    }
-  );
 }
 
 
