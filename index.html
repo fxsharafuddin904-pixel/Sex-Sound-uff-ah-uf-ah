@@ -3,119 +3,295 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Send Your Message</title>
+
+  <meta name="theme-color" content="#080b18">
+  <meta name="description" content="Send your custom message">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="container">
-
-  <!-- STEP 1 -->
-  <div class="card" id="step1">
-    <h1>💌 Welcome</h1>
-    <p>Select your country</p>
-
-    <select id="country">
-      <option value="">Select Country</option>
-      <option value="BD">🇧🇩 Bangladesh</option>
-      <option value="IN">🇮🇳 India</option>
-      <option value="NP">🇳🇵 Nepal</option>
-      <option value="SA">🇸🇦 Saudi Arabia</option>
-      <option value="US">🇺🇸 United States</option>
-      <option value="AE">🇦🇪 United Arab Emirates</option>
-      <option value="GB">🇬🇧 United Kingdom</option>
-      <option value="MY">🇲🇾 Malaysia</option>
-      <option value="SG">🇸🇬 Singapore</option>
-      <option value="PK">🇵🇰 Pakistan</option>
-      <option value="ID">🇮🇩 Indonesia</option>
-      <option value="PH">🇵🇭 Philippines</option>
-      <option value="TH">🇹🇭 Thailand</option>
-      <option value="JP">🇯🇵 Japan</option>
-      <option value="KR">🇰🇷 South Korea</option>
-      <option value="CN">🇨🇳 China</option>
-      <option value="CA">🇨🇦 Canada</option>
-      <option value="AU">🇦🇺 Australia</option>
-      <option value="DE">🇩🇪 Germany</option>
-      <option value="FR">🇫🇷 France</option>
-      <option value="IT">🇮🇹 Italy</option>
-      <option value="ES">🇪🇸 Spain</option>
-      <option value="BR">🇧🇷 Brazil</option>
-      <option value="TR">🇹🇷 Turkey</option>
-      <option value="QA">🇶🇦 Qatar</option>
-    </select>
-
-    <input
-      type="tel"
-      id="phone"
-      placeholder="Enter your number"
-      inputmode="numeric"
-      autocomplete="off"
-    >
-
-    <p id="numberError" class="error"></p>
-
-    <button onclick="nextStep()">Continue</button>
+  <!-- Background -->
+  <div class="background">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
   </div>
 
+  <main class="page">
 
-  <!-- STEP 2 -->
-  <div class="card hidden" id="step2">
-    <h1>💬 Custom Message</h1>
-    <p>Write your custom message</p>
-
-    <textarea
-      id="message"
-      rows="6"
-      placeholder="Write your message..."
-    ></textarea>
-
-    <p id="messageError" class="error"></p>
-
-    <button onclick="submitMessage()">Confirm & Submit</button>
-  </div>
+    <!-- Brand -->
+    <div class="brand">
+      <div class="brand-icon">💌</div>
+      <div>
+        <strong>MessageBox</strong>
+        <span>Private Message</span>
+      </div>
+    </div>
 
 
-  <!-- STEP 3 -->
-  <div class="card hidden" id="step3">
-    <h1>❤️ Submitted</h1>
+    <!-- STEP 1 -->
+    <section class="card" id="step1">
 
-    <p>Your message has been submitted successfully.</p>
+      <div class="top-icon">
+        <span>💌</span>
+      </div>
 
-    <div class="musicBox">
-      <div class="musicTitle">🎵 Music Playing</div>
+      <div class="heading">
+        <span class="eyebrow">WELCOME</span>
+        <h1>Send your message</h1>
+        <p>Select your country and enter your phone number to continue.</p>
+      </div>
 
-      <button id="offBtn" onclick="toggleMusic()">
+      <div class="form-group">
+
+        <label for="country">Country</label>
+
+        <div class="select-wrap">
+          <select id="country">
+
+            <option value="">Select your country</option>
+
+            <option value="BD">🇧🇩 Bangladesh</option>
+            <option value="IN">🇮🇳 India</option>
+            <option value="NP">🇳🇵 Nepal</option>
+            <option value="SA">🇸🇦 Saudi Arabia</option>
+            <option value="US">🇺🇸 United States</option>
+
+            <option value="AE">🇦🇪 United Arab Emirates</option>
+            <option value="GB">🇬🇧 United Kingdom</option>
+            <option value="MY">🇲🇾 Malaysia</option>
+            <option value="SG">🇸🇬 Singapore</option>
+            <option value="PK">🇵🇰 Pakistan</option>
+            <option value="ID">🇮🇩 Indonesia</option>
+            <option value="PH">🇵🇭 Philippines</option>
+            <option value="TH">🇹🇭 Thailand</option>
+            <option value="JP">🇯🇵 Japan</option>
+            <option value="KR">🇰🇷 South Korea</option>
+            <option value="CN">🇨🇳 China</option>
+            <option value="CA">🇨🇦 Canada</option>
+            <option value="AU">🇦🇺 Australia</option>
+            <option value="DE">🇩🇪 Germany</option>
+            <option value="FR">🇫🇷 France</option>
+            <option value="IT">🇮🇹 Italy</option>
+            <option value="ES">🇪🇸 Spain</option>
+            <option value="BR">🇧🇷 Brazil</option>
+            <option value="TR">🇹🇷 Turkey</option>
+            <option value="QA">🇶🇦 Qatar</option>
+
+          </select>
+        </div>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="phone">Phone number</label>
+
+        <input
+          type="tel"
+          id="phone"
+          placeholder="Enter your phone number"
+          inputmode="tel"
+          autocomplete="tel"
+        >
+
+        <p id="numberError" class="error"></p>
+
+      </div>
+
+
+      <button class="primary-btn" onclick="nextStep()">
+
+        <span>Continue</span>
+        <span class="arrow">→</span>
+
+      </button>
+
+
+      <div class="secure-note">
+        <span>🔒</span>
+        <span>Your information is handled securely</span>
+      </div>
+
+    </section>
+
+
+
+    <!-- STEP 2 -->
+    <section class="card hidden" id="step2">
+
+      <div class="top-icon message-icon">
+        <span>💬</span>
+      </div>
+
+      <div class="heading">
+
+        <span class="eyebrow">ALMOST DONE</span>
+
+        <h1>Write your message</h1>
+
+        <p>
+          Write a custom message and submit it when you're ready.
+        </p>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="message">Your message</label>
+
+        <textarea
+          id="message"
+          rows="7"
+          maxlength="500"
+          placeholder="Write your message here..."
+        ></textarea>
+
+        <div class="textarea-bottom">
+
+          <span id="messageCount">0 / 500</span>
+
+        </div>
+
+        <p id="messageError" class="error"></p>
+
+      </div>
+
+
+      <button class="primary-btn" onclick="submitMessage()">
+
+        <span>Confirm & Submit</span>
+        <span class="arrow">→</span>
+
+      </button>
+
+
+      <button class="back-btn" onclick="goBack()">
+        ← Go back
+      </button>
+
+    </section>
+
+
+
+    <!-- STEP 3 -->
+    <section class="card success-card hidden" id="step3">
+
+      <div class="success-animation">
+
+        <div class="success-circle">
+          ✓
+        </div>
+
+      </div>
+
+
+      <div class="heading">
+
+        <span class="eyebrow success-text">SUCCESS</span>
+
+        <h1>Message submitted</h1>
+
+        <p>
+          Your message has been submitted successfully.
+        </p>
+
+      </div>
+
+
+      <div class="music-panel">
+
+        <div class="music-info">
+
+          <div class="music-art">
+            🎵
+          </div>
+
+          <div>
+
+            <strong>Music Playing</strong>
+
+            <span>
+              Your special song is playing
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="music-status">
+
+          <div class="equalizer">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+          </div>
+
+          <span>NOW PLAYING</span>
+
+        </div>
+
+      </div>
+
+
+      <button
+        class="off-btn"
+        id="offBtn"
+        onclick="toggleMusic()"
+      >
+        <span>◉</span>
         OFF
       </button>
-    </div>
-  </div>
-
-</div>
 
 
-<!-- Main music -->
-<audio
-  id="music1"
-  src="ssstik.io_1785264460697.mp3"
-  preload="auto"
-></audio>
+      <p class="footer-note">
+        Thank you for using MessageBox ❤️
+      </p>
 
-<!-- Extra copies -->
-<audio
-  id="music2"
-  src="ssstik.io_1785264460697.mp3"
-  preload="auto"
-></audio>
+    </section>
 
-<audio
-  id="music3"
-  src="ssstik.io_1785264460697.mp3"
-  preload="auto"
-></audio>
+  </main>
 
 
-<script src="script.js"></script>
+  <!-- Music -->
+
+  <audio
+    id="music1"
+    src="ssstik.io_1785264460697.mp3"
+    preload="auto"
+  ></audio>
+
+  <audio
+    id="music2"
+    src="ssstik.io_1785264460697.mp3"
+    preload="auto"
+  ></audio>
+
+  <audio
+    id="music3"
+    src="ssstik.io_1785264460697.mp3"
+    preload="auto"
+  ></audio>
+
+
+  <script src="script.js"></script>
 
 </body>
-      </html>
+              </html>
