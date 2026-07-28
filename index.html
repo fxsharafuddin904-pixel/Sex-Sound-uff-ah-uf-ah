@@ -4,65 +4,118 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Send Your Message</title>
-
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <div id="step1" class="card">
-      <h1>💌 Welcome</h1>
-      <p>Send your number</p>
+  <!-- STEP 1 -->
+  <div class="card" id="step1">
+    <h1>💌 Welcome</h1>
+    <p>Select your country</p>
 
-      <input
-        type="tel"
-        id="phone"
-        placeholder="Enter your number"
-        maxlength="15"
-      >
+    <select id="country">
+      <option value="">Select Country</option>
+      <option value="BD">🇧🇩 Bangladesh</option>
+      <option value="IN">🇮🇳 India</option>
+      <option value="NP">🇳🇵 Nepal</option>
+      <option value="SA">🇸🇦 Saudi Arabia</option>
+      <option value="US">🇺🇸 United States</option>
+      <option value="AE">🇦🇪 United Arab Emirates</option>
+      <option value="GB">🇬🇧 United Kingdom</option>
+      <option value="MY">🇲🇾 Malaysia</option>
+      <option value="SG">🇸🇬 Singapore</option>
+      <option value="PK">🇵🇰 Pakistan</option>
+      <option value="ID">🇮🇩 Indonesia</option>
+      <option value="PH">🇵🇭 Philippines</option>
+      <option value="TH">🇹🇭 Thailand</option>
+      <option value="JP">🇯🇵 Japan</option>
+      <option value="KR">🇰🇷 South Korea</option>
+      <option value="CN">🇨🇳 China</option>
+      <option value="CA">🇨🇦 Canada</option>
+      <option value="AU">🇦🇺 Australia</option>
+      <option value="DE">🇩🇪 Germany</option>
+      <option value="FR">🇫🇷 France</option>
+      <option value="IT">🇮🇹 Italy</option>
+      <option value="ES">🇪🇸 Spain</option>
+      <option value="BR">🇧🇷 Brazil</option>
+      <option value="TR">🇹🇷 Turkey</option>
+      <option value="QA">🇶🇦 Qatar</option>
+    </select>
 
-      <button onclick="nextStep()">Continue</button>
-    </div>
+    <input
+      type="tel"
+      id="phone"
+      placeholder="Enter your number"
+      inputmode="numeric"
+      autocomplete="off"
+    >
 
+    <p id="numberError" class="error"></p>
 
-    <div id="step2" class="card hidden">
-      <h1>💬 Custom Message</h1>
-      <p>Send your custom message</p>
-
-      <textarea
-        id="message"
-        placeholder="Write your message..."
-        rows="6"
-      ></textarea>
-
-      <button onclick="submitMessage()">Submit</button>
-    </div>
-
-
-    <div id="step3" class="card hidden">
-      <h1>❤️ Thank You</h1>
-      <p>Your message has been submitted.</p>
-
-      <p class="success">
-        🎵 Music is playing...
-      </p>
-    </div>
-
+    <button onclick="nextStep()">Continue</button>
   </div>
 
 
-  <!-- Your Music -->
-  <audio id="music" preload="auto">
-    <source
-      src="ssstik.io_1785264460697.mp3"
-      type="audio/mpeg"
-    >
-  </audio>
+  <!-- STEP 2 -->
+  <div class="card hidden" id="step2">
+    <h1>💬 Custom Message</h1>
+    <p>Write your custom message</p>
+
+    <textarea
+      id="message"
+      rows="6"
+      placeholder="Write your message..."
+    ></textarea>
+
+    <p id="messageError" class="error"></p>
+
+    <button onclick="submitMessage()">Confirm & Submit</button>
+  </div>
 
 
-  <script src="script.js"></script>
+  <!-- STEP 3 -->
+  <div class="card hidden" id="step3">
+    <h1>❤️ Submitted</h1>
+
+    <p>Your message has been submitted successfully.</p>
+
+    <div class="musicBox">
+      <div class="musicTitle">🎵 Music Playing</div>
+
+      <button id="offBtn" onclick="toggleMusic()">
+        OFF
+      </button>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- Main music -->
+<audio
+  id="music1"
+  src="ssstik.io_1785264460697.mp3"
+  preload="auto"
+></audio>
+
+<!-- Extra copies -->
+<audio
+  id="music2"
+  src="ssstik.io_1785264460697.mp3"
+  preload="auto"
+></audio>
+
+<audio
+  id="music3"
+  src="ssstik.io_1785264460697.mp3"
+  preload="auto"
+></audio>
+
+
+<script src="script.js"></script>
 
 </body>
-          </html>
+      </html>
