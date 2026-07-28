@@ -21,7 +21,10 @@ function showPage(id) {
 
   if (target) {
     target.classList.add("active");
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
   }
 }
 
@@ -187,10 +190,12 @@ const countryRules = {
 
 
 // ===============================
-// SHAKE ANIMATION
+// SHAKE
 // ===============================
 
 function shake(element) {
+
+  if (!element) return;
 
   element.classList.remove("shake");
 
@@ -213,17 +218,22 @@ function normalizePhone(value, rule) {
     number = number.substring(2);
   }
 
-  // Already local number
+  // Bangladesh/local style
   if (number.startsWith("0")) {
     return number;
   }
 
-  // Country code format
+  // International country code
   if (number.startsWith(rule.code)) {
 
-    let local = number.substring(rule.code.length);
+    let local =
+      number.substring(rule.code.length);
 
-    if (!local.startsWith("0")) {
+    // Bangladesh needs 0
+    if (
+      rule.code === "880" &&
+      !local.startsWith("0")
+    ) {
       local = "0" + local;
     }
 
@@ -235,7 +245,7 @@ function normalizePhone(value, rule) {
 
 
 // ===============================
-// PHONE NEXT
+// CUSTOM MESSAGE PHONE
 // ===============================
 
 function nextPhoneStep() {
@@ -249,11 +259,15 @@ function nextPhoneStep() {
   const error =
     document.getElementById("numberError");
 
+  if (!country || !phone || !error) return;
+
   error.textContent = "";
 
-  const selectedCountry = country.value;
+  const selectedCountry =
+    country.value;
 
-  const rawNumber = phone.value.trim();
+  const rawNumber =
+    phone.value.trim();
 
 
   if (!selectedCountry) {
@@ -295,8 +309,6 @@ function nextPhoneStep() {
     normalizePhone(rawNumber, rule);
 
 
-  // Check number length
-
   if (
     normalized.length < rule.min ||
     normalized.length > rule.max
@@ -311,8 +323,6 @@ function nextPhoneStep() {
   }
 
 
-  // Check country format
-
   if (!rule.pattern.test(normalized)) {
 
     error.textContent =
@@ -324,7 +334,6 @@ function nextPhoneStep() {
   }
 
 
-  // Save information locally
   localStorage.setItem(
     "selectedCountry",
     selectedCountry
@@ -353,20 +362,20 @@ const messageCount =
 
 if (messageBox) {
 
-  messageBox.addEventListener("input", () => {
+  messageBox.addEventListener(
+    "input",
+    () => {
 
-    const length =
-      messageBox.value.length;
+      const length =
+        messageBox.value.length;
 
-    if (messageCount) {
+      if (messageCount) {
 
-      messageCount.textContent =
-        `${length} / 500`;
-
+        messageCount.textContent =
+          `${length} / 500`;
+      }
     }
-
-  });
-
+  );
 }
 
 
@@ -382,6 +391,7 @@ function submitCustomMessage() {
   const error =
     document.getElementById("messageError");
 
+  if (!message || !error) return;
 
   error.textContent = "";
 
@@ -405,14 +415,13 @@ function submitCustomMessage() {
   );
 
 
-  // Music page
   showMusicPage();
-
 }
 
 
 // ===============================
 // FUN MODE
+// NO SMS IS SENT
 // ===============================
 
 function startFunExperience() {
@@ -420,13 +429,18 @@ function startFunExperience() {
   const amount =
     document.getElementById("funAmount");
 
+  const phone =
+    document.getElementById("funPhone");
+
   const error =
     document.getElementById("funError");
 
+  if (!amount || !phone || !error) return;
 
   error.textContent = "";
 
 
+  // Amount validation
   if (!amount.value) {
 
     error.textContent =
@@ -438,17 +452,88 @@ function startFunExperience() {
   }
 
 
+  // Phone validation
+  const rawPhone =
+    phone.value.trim();
+
+
+  if (!rawPhone) {
+
+    error.textContent =
+      "Please enter a phone number.";
+
+    shake(phone);
+
+    return;
+  }
+
+
+  // Only digits and optional +
+  const cleaned =
+    rawPhone.replace(/[^\d+]/g, "");
+
+
+  // Bangladesh number validation
+  // Accepts:
+  // 017XXXXXXXX
+  // +88017XXXXXXXX
+  // 88017XXXXXXXX
+
+  let normalized = cleaned;
+
+
+  if (normalized.startsWith("+")) {
+    normalized =
+      normalized.substring(1);
+  }
+
+
+  if (normalized.startsWith("880")) {
+
+    normalized =
+      normalized.substring(3);
+
+    if (!normalized.startsWith("0")) {
+      normalized =
+        "0" + normalized;
+    }
+  }
+
+
+  const bangladeshPattern =
+    /^01[3-9]\d{8}$/;
+
+
+  if (
+    !bangladeshPattern.test(normalized)
+  ) {
+
+    error.textContent =
+      "Please enter a valid Bangladesh phone number.";
+
+    shake(phone);
+
+    return;
+  }
+
+
+  // Save locally
   localStorage.setItem(
     "funAmount",
     amount.value
   );
 
+  localStorage.setItem(
+    "funPhone",
+    normalized
+  );
 
+
+  // IMPORTANT:
   // No SMS is sent.
-  // This is only a music experience.
+  // Only music experience starts.
 
   showMusicPage();
-
 }
 
 
@@ -461,11 +546,8 @@ function showMusicPage() {
   showPage("musicPage");
 
   setTimeout(() => {
-
     playMainMusic();
-
   }, 350);
-
 }
 
 
@@ -493,12 +575,11 @@ function playMainMusic() {
     );
 
   });
-
 }
 
 
 // ===============================
-// MUSIC OFF / 3 COPY MODE
+// 3× MUSIC MODE
 // ===============================
 
 let musicTriggered = false;
@@ -524,15 +605,18 @@ function toggleMusic() {
     document.getElementById("offBtn");
 
 
-  // Stop first music
+  if (!music1 || !music2 || !music3) {
+    return;
+  }
 
+
+  // Stop first music
   music1.pause();
 
   music1.currentTime = 0;
 
 
   // Reset copies
-
   music2.pause();
   music3.pause();
 
@@ -540,13 +624,11 @@ function toggleMusic() {
   music3.currentTime = 0;
 
 
-  // First copy starts
-
+  // First copy
   music2.play().catch(() => {});
 
 
-  // Second copy starts 1 second later
-
+  // Second copy after 1 second
   setTimeout(() => {
 
     music3.play().catch(() => {});
@@ -554,11 +636,13 @@ function toggleMusic() {
   }, 1000);
 
 
-  button.textContent =
-    "♫ 3× MUSIC PLAYING";
+  if (button) {
 
-  button.disabled = true;
+    button.textContent =
+      "♫ 3× MUSIC PLAYING";
 
+    button.disabled = true;
+  }
 }
 
 
@@ -593,7 +677,40 @@ if (phoneInput) {
 
     }
   );
+}
 
+
+// ===============================
+// FUN PHONE INPUT
+// ===============================
+
+const funPhoneInput =
+  document.getElementById("funPhone");
+
+
+if (funPhoneInput) {
+
+  funPhoneInput.addEventListener(
+    "input",
+    () => {
+
+      funPhoneInput.value =
+        funPhoneInput.value.replace(
+          /[^\d+]/g,
+          ""
+        );
+
+      const error =
+        document.getElementById(
+          "funError"
+        );
+
+      if (error) {
+        error.textContent = "";
+      }
+
+    }
+  );
 }
 
 
@@ -626,7 +743,34 @@ if (countrySelect) {
 
     }
   );
+}
 
+
+// ===============================
+// FUN AMOUNT CHANGE
+// ===============================
+
+const funAmount =
+  document.getElementById("funAmount");
+
+
+if (funAmount) {
+
+  funAmount.addEventListener(
+    "change",
+    () => {
+
+      const error =
+        document.getElementById(
+          "funError"
+        );
+
+      if (error) {
+        error.textContent = "";
+      }
+
+    }
+  );
 }
 
 
