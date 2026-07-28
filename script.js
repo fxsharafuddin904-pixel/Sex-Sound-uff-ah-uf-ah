@@ -1,7 +1,11 @@
+// ===============================
+// PAGE NAVIGATION
+// ===============================
+
 const pages = [
   "welcomePage",
   "categoryPage",
-  "customPage",
+  "phonePage",
   "messagePage",
   "funPage",
   "musicPage"
@@ -9,73 +13,182 @@ const pages = [
 
 function showPage(id) {
   pages.forEach(page => {
-    document.getElementById(page)?.classList.remove("active");
+    const el = document.getElementById(page);
+    if (el) el.classList.remove("active");
   });
 
-  document.getElementById(id)?.classList.add("active");
+  const target = document.getElementById(id);
 
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
+  if (target) {
+    target.classList.add("active");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+}
+
+function showCategoryPage() {
+  showPage("categoryPage");
+}
+
+function showPhonePage() {
+  showPage("phonePage");
+}
+
+function showFunPage() {
+  showPage("funPage");
 }
 
 
-// =========================
-// COUNTRY RULES
-// =========================
+// ===============================
+// COUNTRY PHONE VALIDATION
+// ===============================
 
 const countryRules = {
 
-  BD: { min: 11, max: 11, pattern: /^01\d{9}$/ },
+  BD: {
+    code: "880",
+    min: 11,
+    max: 11,
+    pattern: /^01\d{9}$/
+  },
 
-  US: { min: 10, max: 10, pattern: /^[2-9]\d{9}$/ },
+  US: {
+    code: "1",
+    min: 10,
+    max: 10,
+    pattern: /^[2-9]\d{9}$/
+  },
 
-  IN: { min: 10, max: 10, pattern: /^[6-9]\d{9}$/ },
+  IN: {
+    code: "91",
+    min: 10,
+    max: 10,
+    pattern: /^[6-9]\d{9}$/
+  },
 
-  NP: { min: 10, max: 10, pattern: /^9\d{9}$/ },
+  NP: {
+    code: "977",
+    min: 10,
+    max: 10,
+    pattern: /^9\d{9}$/
+  },
 
-  SA: { min: 9, max: 9, pattern: /^5\d{8}$/ },
+  SA: {
+    code: "966",
+    min: 9,
+    max: 9,
+    pattern: /^5\d{8}$/
+  },
 
-  AE: { min: 9, max: 9, pattern: /^5\d{8}$/ },
+  AE: {
+    code: "971",
+    min: 9,
+    max: 9,
+    pattern: /^5\d{8}$/
+  },
 
-  GB: { min: 10, max: 10, pattern: /^7\d{9}$/ },
+  GB: {
+    code: "44",
+    min: 10,
+    max: 10,
+    pattern: /^7\d{9}$/
+  },
 
-  MY: { min: 9, max: 10, pattern: /^1\d{8,9}$/ },
+  MY: {
+    code: "60",
+    min: 9,
+    max: 10,
+    pattern: /^1\d{8,9}$/
+  },
 
-  SG: { min: 8, max: 8, pattern: /^[689]\d{7}$/ },
+  SG: {
+    code: "65",
+    min: 8,
+    max: 8,
+    pattern: /^[689]\d{7}$/
+  },
 
-  PK: { min: 10, max: 10, pattern: /^3\d{9}$/ },
+  PK: {
+    code: "92",
+    min: 10,
+    max: 10,
+    pattern: /^3\d{9}$/
+  },
 
-  ID: { min: 9, max: 12, pattern: /^8\d{8,11}$/ },
+  ID: {
+    code: "62",
+    min: 9,
+    max: 12,
+    pattern: /^8\d{8,11}$/
+  },
 
-  PH: { min: 10, max: 10, pattern: /^9\d{9}$/ },
+  PH: {
+    code: "63",
+    min: 10,
+    max: 10,
+    pattern: /^9\d{9}$/
+  },
 
-  TH: { min: 9, max: 9, pattern: /^[689]\d{8}$/ },
+  TH: {
+    code: "66",
+    min: 9,
+    max: 9,
+    pattern: /^[689]\d{8}$/
+  },
 
-  JP: { min: 10, max: 10, pattern: /^7\d{9}$/ },
+  JP: {
+    code: "81",
+    min: 10,
+    max: 10,
+    pattern: /^7\d{9}$/
+  },
 
-  KR: { min: 10, max: 10, pattern: /^1\d{9}$/ },
+  KR: {
+    code: "82",
+    min: 10,
+    max: 10,
+    pattern: /^1\d{9}$/
+  },
 
-  CN: { min: 11, max: 11, pattern: /^1\d{10}$/ },
+  CN: {
+    code: "86",
+    min: 11,
+    max: 11,
+    pattern: /^1\d{10}$/
+  },
 
-  CA: { min: 10, max: 10, pattern: /^[2-9]\d{9}$/ },
+  CA: {
+    code: "1",
+    min: 10,
+    max: 10,
+    pattern: /^[2-9]\d{9}$/
+  },
 
-  AU: { min: 9, max: 9, pattern: /^4\d{8}$/ },
+  AU: {
+    code: "61",
+    min: 9,
+    max: 9,
+    pattern: /^4\d{8}$/
+  },
 
-  DE: { min: 10, max: 11, pattern: /^1\d{9,10}$/ },
+  DE: {
+    code: "49",
+    min: 10,
+    max: 11,
+    pattern: /^1\d{9,10}$/
+  },
 
-  FR: { min: 9, max: 9, pattern: /^[67]\d{8}$/ },
-
-  IT: { min: 9, max: 10, pattern: /^3\d{8,9}$/ },
-
-  ES: { min: 9, max: 9, pattern: /^[67]\d{8}$/ }
+  FR: {
+    code: "33",
+    min: 9,
+    max: 9,
+    pattern: /^[67]\d{8}$/
+  }
 };
 
 
-// =========================
-// SHAKE
-// =========================
+// ===============================
+// SHAKE ANIMATION
+// ===============================
 
 function shake(element) {
 
@@ -87,204 +200,191 @@ function shake(element) {
 }
 
 
-// =========================
-// VALIDATE NUMBER
-// =========================
+// ===============================
+// NORMALIZE PHONE
+// ===============================
 
-function validateNumber(countryId, phoneId, errorId) {
+function normalizePhone(value, rule) {
+
+  let number = value.replace(/\D/g, "");
+
+  // 00XXXXXXXX
+  if (number.startsWith("00")) {
+    number = number.substring(2);
+  }
+
+  // Already local number
+  if (number.startsWith("0")) {
+    return number;
+  }
+
+  // Country code format
+  if (number.startsWith(rule.code)) {
+
+    let local = number.substring(rule.code.length);
+
+    if (!local.startsWith("0")) {
+      local = "0" + local;
+    }
+
+    return local;
+  }
+
+  return number;
+}
+
+
+// ===============================
+// PHONE NEXT
+// ===============================
+
+function nextPhoneStep() {
 
   const country =
-    document.getElementById(countryId);
+    document.getElementById("country");
 
   const phone =
-    document.getElementById(phoneId);
+    document.getElementById("phone");
 
   const error =
-    document.getElementById(errorId);
+    document.getElementById("numberError");
 
   error.textContent = "";
 
-  if (!country.value) {
+  const selectedCountry = country.value;
+
+  const rawNumber = phone.value.trim();
+
+
+  if (!selectedCountry) {
 
     error.textContent =
-      "Please select your country.";
+      "Please select your country first.";
 
     shake(country);
 
-    return false;
+    return;
   }
 
-  let number =
-    phone.value.trim();
 
-  // Allow + and spaces while typing,
-  // but validate digits only.
-  number = number.replace(/[\s()-]/g, "");
-
-  // Country code is accepted.
-  // Convert +88018... to local 018...
-  if (number.startsWith("+")) {
-
-    const codes = {
-      BD: "+880",
-      US: "+1",
-      IN: "+91",
-      NP: "+977",
-      SA: "+966",
-      AE: "+971",
-      GB: "+44",
-      MY: "+60",
-      SG: "+65",
-      PK: "+92",
-      ID: "+62",
-      PH: "+63",
-      TH: "+66",
-      JP: "+81",
-      KR: "+82",
-      CN: "+86",
-      CA: "+1",
-      AU: "+61",
-      DE: "+49",
-      FR: "+33",
-      IT: "+39",
-      ES: "+34"
-    };
-
-    const code = codes[country.value];
-
-    if (code && number.startsWith(code)) {
-
-      number =
-        number.substring(code.length);
-
-      // Bangladesh example:
-      // +88018... → 018...
-      if (
-        country.value === "BD" &&
-        !number.startsWith("0")
-      ) {
-        number = "0" + number;
-      }
-    }
-  }
-
-  // 00 country code
-  if (number.startsWith("00")) {
-
-    number =
-      number.substring(2);
-  }
-
-  // Only digits from here
-  if (!/^\d+$/.test(number)) {
+  if (!rawNumber) {
 
     error.textContent =
-      "Please enter numbers only.";
+      "Please enter your phone number.";
 
     shake(phone);
 
-    return false;
+    return;
   }
 
+
   const rule =
-    countryRules[country.value];
+    countryRules[selectedCountry];
+
 
   if (!rule) {
 
     error.textContent =
-      "Country validation unavailable.";
+      "Phone validation is unavailable.";
 
-    return false;
+    return;
   }
+
+
+  const normalized =
+    normalizePhone(rawNumber, rule);
+
+
+  // Check number length
 
   if (
-    number.length < rule.min ||
-    number.length > rule.max
+    normalized.length < rule.min ||
+    normalized.length > rule.max
   ) {
-
-    error.textContent =
-      "Invalid phone number length.";
-
-    shake(phone);
-
-    return false;
-  }
-
-  if (!rule.pattern.test(number)) {
 
     error.textContent =
       "Please enter a valid phone number.";
 
     shake(phone);
 
-    return false;
-  }
-
-  return true;
-}
-
-
-// =========================
-// CATEGORY
-// =========================
-
-function showCategoryPage() {
-  showPage("categoryPage");
-}
-
-
-// =========================
-// CUSTOM MESSAGE
-// =========================
-
-function showCustomMessage() {
-  showPage("customPage");
-}
-
-
-function customPhoneNext() {
-
-  if (
-    !validateNumber(
-      "customCountry",
-      "customPhone",
-      "customPhoneError"
-    )
-  ) {
     return;
   }
+
+
+  // Check country format
+
+  if (!rule.pattern.test(normalized)) {
+
+    error.textContent =
+      "Please enter a valid phone number.";
+
+    shake(phone);
+
+    return;
+  }
+
+
+  // Save information locally
+  localStorage.setItem(
+    "selectedCountry",
+    selectedCountry
+  );
+
+  localStorage.setItem(
+    "phoneNumber",
+    normalized
+  );
+
 
   showPage("messagePage");
 }
 
 
-// =========================
+// ===============================
 // MESSAGE COUNTER
-// =========================
+// ===============================
 
-const message =
+const messageBox =
   document.getElementById("message");
 
-if (message) {
+const messageCount =
+  document.getElementById("messageCount");
 
-  message.addEventListener("input", () => {
 
-    document.getElementById(
-      "messageCount"
-    ).textContent =
-      `${message.value.length} / 500`;
+if (messageBox) {
+
+  messageBox.addEventListener("input", () => {
+
+    const length =
+      messageBox.value.length;
+
+    if (messageCount) {
+
+      messageCount.textContent =
+        `${length} / 500`;
+
+    }
 
   });
 
 }
 
 
+// ===============================
+// CUSTOM MESSAGE SUBMIT
+// ===============================
+
 function submitCustomMessage() {
+
+  const message =
+    document.getElementById("message");
 
   const error =
     document.getElementById("messageError");
 
+
   error.textContent = "";
+
 
   if (!message.value.trim()) {
 
@@ -293,58 +393,27 @@ function submitCustomMessage() {
 
     shake(message);
 
+    message.focus();
+
     return;
   }
 
+
+  localStorage.setItem(
+    "customMessage",
+    message.value.trim()
+  );
+
+
+  // Music page
   showMusicPage();
+
 }
 
 
-// =========================
+// ===============================
 // FUN MODE
-// =========================
-
-function showFunPage() {
-
-  showPage("funPage");
-
-  // Important:
-  // number area stays hidden
-  // until amount is selected.
-
-  document
-    .getElementById("funNumberArea")
-    .classList.remove("show");
-}
-
-
-function showFunNumberFields() {
-
-  const amount =
-    document.getElementById("funAmount");
-
-  const area =
-    document.getElementById("funNumberArea");
-
-  const error =
-    document.getElementById("funError");
-
-  error.textContent = "";
-
-  if (!amount.value) {
-
-    area.classList.remove("show");
-
-    return;
-  }
-
-  area.classList.add("show");
-}
-
-
-// =========================
-// START FUN
-// =========================
+// ===============================
 
 function startFunExperience() {
 
@@ -354,7 +423,9 @@ function startFunExperience() {
   const error =
     document.getElementById("funError");
 
+
   error.textContent = "";
+
 
   if (!amount.value) {
 
@@ -366,26 +437,24 @@ function startFunExperience() {
     return;
   }
 
-  if (
-    !validateNumber(
-      "funCountry",
-      "funPhone",
-      "funError"
-    )
-  ) {
-    return;
-  }
 
-  // This website does NOT send SMS.
-  // It only starts the music experience.
+  localStorage.setItem(
+    "funAmount",
+    amount.value
+  );
+
+
+  // No SMS is sent.
+  // This is only a music experience.
 
   showMusicPage();
+
 }
 
 
-// =========================
-// MUSIC
-// =========================
+// ===============================
+// MUSIC PAGE
+// ===============================
 
 function showMusicPage() {
 
@@ -395,9 +464,14 @@ function showMusicPage() {
 
     playMainMusic();
 
-  }, 300);
+  }, 350);
+
 }
 
+
+// ===============================
+// MAIN MUSIC
+// ===============================
 
 function playMainMusic() {
 
@@ -406,21 +480,26 @@ function playMainMusic() {
 
   if (!music) return;
 
+
+  music.pause();
+
   music.currentTime = 0;
+
 
   music.play().catch(() => {
 
     console.log(
-      "Tap the page once if your browser blocks autoplay."
+      "Browser requires user interaction for audio."
     );
 
   });
+
 }
 
 
-// =========================
-// OFF → 3 MUSIC COPIES
-// =========================
+// ===============================
+// MUSIC OFF / 3 COPY MODE
+// ===============================
 
 let musicTriggered = false;
 
@@ -430,6 +509,7 @@ function toggleMusic() {
   if (musicTriggered) return;
 
   musicTriggered = true;
+
 
   const music1 =
     document.getElementById("music1");
@@ -444,9 +524,10 @@ function toggleMusic() {
     document.getElementById("offBtn");
 
 
-  // Stop original
+  // Stop first music
 
   music1.pause();
+
   music1.currentTime = 0;
 
 
@@ -459,12 +540,12 @@ function toggleMusic() {
   music3.currentTime = 0;
 
 
-  // Start first copy
+  // First copy starts
 
   music2.play().catch(() => {});
 
 
-  // Start second copy after 1 second
+  // Second copy starts 1 second later
 
   setTimeout(() => {
 
@@ -477,29 +558,87 @@ function toggleMusic() {
     "♫ 3× MUSIC PLAYING";
 
   button.disabled = true;
+
 }
 
 
-// =========================
-// PHONE INPUT
-// =========================
+// ===============================
+// PHONE INPUT CLEANING
+// ===============================
 
-["customPhone", "funPhone"].forEach(id => {
+const phoneInput =
+  document.getElementById("phone");
 
-  const input =
-    document.getElementById(id);
 
-  if (!input) return;
+if (phoneInput) {
 
-  input.addEventListener("input", () => {
+  phoneInput.addEventListener(
+    "input",
+    () => {
 
-    // Keep digits, +, spaces, brackets and hyphens
-    input.value =
-      input.value.replace(
-        /[^0-9+()\-\s]/g,
-        ""
-      );
+      phoneInput.value =
+        phoneInput.value.replace(
+          /[^\d+]/g,
+          ""
+        );
 
-  });
+      const error =
+        document.getElementById(
+          "numberError"
+        );
 
-});
+      if (error) {
+        error.textContent = "";
+      }
+
+    }
+  );
+
+}
+
+
+// ===============================
+// COUNTRY CHANGE
+// ===============================
+
+const countrySelect =
+  document.getElementById("country");
+
+
+if (countrySelect) {
+
+  countrySelect.addEventListener(
+    "change",
+    () => {
+
+      if (phoneInput) {
+        phoneInput.value = "";
+      }
+
+      const error =
+        document.getElementById(
+          "numberError"
+        );
+
+      if (error) {
+        error.textContent = "";
+      }
+
+    }
+  );
+
+}
+
+
+// ===============================
+// START PAGE
+// ===============================
+
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
+
+    showPage("welcomePage");
+
+  }
+);
