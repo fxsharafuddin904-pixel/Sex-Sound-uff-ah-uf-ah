@@ -43,6 +43,7 @@ body {
   padding: 24px;
 }
 
+
 /* =========================
    BACKGROUND GLOW
 ========================= */
@@ -55,7 +56,6 @@ body {
   filter: blur(100px);
   opacity: .28;
   pointer-events: none;
-  z-index: 0;
 }
 
 .glow-one {
@@ -75,6 +75,7 @@ body {
   top: 40%;
   right: -220px;
 }
+
 
 /* =========================
    PAGES
@@ -104,6 +105,7 @@ body {
     transform: translateY(0) scale(1);
   }
 }
+
 
 /* =========================
    CARDS
@@ -136,6 +138,7 @@ body {
   padding: 55px 35px;
   text-align: center;
 }
+
 
 /* =========================
    BRAND
@@ -190,6 +193,7 @@ body {
   font-size: 11px;
   margin-top: 3px;
 }
+
 
 /* =========================
    WELCOME
@@ -252,6 +256,7 @@ body {
 
 .welcome-description {
   max-width: 550px;
+
   margin: auto;
 
   color: var(--muted);
@@ -261,15 +266,21 @@ body {
   font-size: 14px;
 }
 
+
 /* =========================
-   FEATURES
+   FEATURE ROW
 ========================= */
+
+/*
+   Important:
+   3 cards stay in ONE ROW
+*/
 
 .feature-row {
   display: grid;
 
   grid-template-columns:
-    repeat(3, 1fr);
+    repeat(3, minmax(0, 1fr));
 
   gap: 12px;
 
@@ -277,6 +288,8 @@ body {
 }
 
 .feature {
+  min-width: 0;
+
   padding: 18px 10px;
 
   border: 1px solid var(--border);
@@ -286,17 +299,7 @@ body {
   background:
     rgba(255,255,255,.025);
 
-  transition: .25s ease;
-}
-
-.feature:hover {
-  transform: translateY(-3px);
-
-  border-color:
-    rgba(124,92,255,.35);
-
-  background:
-    rgba(124,92,255,.06);
+  text-align: center;
 }
 
 .feature span {
@@ -311,6 +314,8 @@ body {
   display: block;
 
   font-size: 12px;
+
+  white-space: nowrap;
 }
 
 .feature small {
@@ -324,6 +329,7 @@ body {
 
   line-height: 1.5;
 }
+
 
 /* =========================
    BUTTONS
@@ -376,8 +382,7 @@ button {
   transform: translateY(-3px);
 
   box-shadow:
-    0 20px 45px
-    rgba(93,83,255,.4);
+    0 20px 45px rgba(93,83,255,.4);
 }
 
 .primary-btn:active {
@@ -404,8 +409,6 @@ button {
   cursor: pointer;
 
   font-size: 12px;
-
-  transition: .2s ease;
 }
 
 .back-btn:hover {
@@ -422,8 +425,9 @@ button {
   margin-top: 22px;
 }
 
+
 /* =========================
-   HEADINGS
+   HEADING
 ========================= */
 
 .section-heading {
@@ -448,6 +452,7 @@ button {
 
   line-height: 1.7;
 }
+
 
 /* =========================
    CATEGORY
@@ -555,6 +560,7 @@ button {
   font-size: 23px;
 }
 
+
 /* =========================
    FORMS
 ========================= */
@@ -582,8 +588,8 @@ textarea {
 
   outline: none;
 
-  border: 1px solid
-    rgba(255,255,255,.09);
+  border:
+    1px solid rgba(255,255,255,.09);
 
   border-radius: 16px;
 
@@ -632,28 +638,6 @@ select option {
   color: white;
 }
 
-/* =========================
-   PHONE INPUT
-========================= */
-
-#funPhone {
-  letter-spacing: .5px;
-}
-
-.phone-help {
-  color: #737b96;
-
-  font-size: 10px;
-
-  margin-top: 7px;
-
-  line-height: 1.5;
-}
-
-/* =========================
-   ERROR
-========================= */
-
 .error {
   color: #ff6c8c;
 
@@ -663,10 +647,6 @@ select option {
 
   min-height: 15px;
 }
-
-/* =========================
-   TEXTAREA
-========================= */
 
 .textarea-footer {
   display: flex;
@@ -681,6 +661,7 @@ select option {
 
   font-size: 10px;
 }
+
 
 /* =========================
    MUSIC PAGE
@@ -710,9 +691,10 @@ select option {
 
   box-shadow:
     0 0 0 15px
-      rgba(124,92,255,.06),
+    rgba(124,92,255,.06),
+
     0 0 60px
-      rgba(93,83,255,.35);
+    rgba(93,83,255,.35);
 
   animation:
     pulse 2.2s ease-in-out infinite;
@@ -724,9 +706,10 @@ select option {
 
     box-shadow:
       0 0 0 25px
-        rgba(124,92,255,.03),
+      rgba(124,92,255,.03),
+
       0 0 80px
-        rgba(93,83,255,.5);
+      rgba(93,83,255,.5);
   }
 }
 
@@ -767,10 +750,6 @@ select option {
   font-size: 11px;
 }
 
-/* =========================
-   EQUALIZER
-========================= */
-
 .equalizer {
   display: flex;
 
@@ -792,8 +771,8 @@ select option {
 
   animation:
     equalize .8s
-    ease-in-out infinite
-    alternate;
+    ease-in-out
+    infinite alternate;
 }
 
 .equalizer i:nth-child(2) {
@@ -818,10 +797,6 @@ select option {
   }
 }
 
-/* =========================
-   MUSIC BUTTON
-========================= */
-
 .music-btn {
   width: 100%;
 
@@ -829,8 +804,8 @@ select option {
 
   border-radius: 16px;
 
-  border: 1px solid
-    rgba(255,255,255,.1);
+  border:
+    1px solid rgba(255,255,255,.1);
 
   background:
     rgba(255,255,255,.05);
@@ -855,8 +830,9 @@ select option {
   cursor: default;
 }
 
+
 /* =========================
-   SHAKE ANIMATION
+   SHAKE
 ========================= */
 
 .shake {
@@ -865,9 +841,7 @@ select option {
 }
 
 @keyframes shake {
-
-  0%,
-  100% {
+  0%,100% {
     transform: translateX(0);
   }
 
@@ -879,6 +853,7 @@ select option {
     transform: translateX(7px);
   }
 }
+
 
 /* =========================
    MOBILE
@@ -917,24 +892,41 @@ select option {
     letter-spacing: -1.8px;
   }
 
+
+  /*
+    Keep Bombing / Message / Fun
+    in ONE horizontal row
+  */
+
   .feature-row {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
     gap: 7px;
   }
 
   .feature {
-    padding: 13px 5px;
+    padding: 13px 4px;
+
+    border-radius: 15px;
   }
 
   .feature span {
     font-size: 20px;
+
+    margin-bottom: 7px;
   }
 
   .feature strong {
-    font-size: 10px;
+    font-size: 9px;
+
+    white-space: nowrap;
   }
 
   .feature small {
-    font-size: 8px;
+    font-size: 7px;
+
+    line-height: 1.35;
   }
 
   .top-brand {
@@ -946,56 +938,54 @@ select option {
       45px 22px;
   }
 
-  .music-card h2 {
-    font-size: 26px;
-  }
-
-  .category-option {
-    padding: 15px;
-  }
-
-  .category-icon {
-    width: 46px;
-    height: 46px;
-    font-size: 22px;
-  }
-
-  select,
-  input {
-    height: 54px;
+  .music-status {
+    font-size: 10px;
   }
 }
 
+
 /* =========================
-   SMALL MOBILE
+   VERY SMALL SCREEN
 ========================= */
 
-@media (max-width: 380px) {
+@media (max-width: 360px) {
 
   body {
-    padding: 10px;
+    padding: 9px;
   }
 
   .welcome-card,
   .app-card,
   .music-card {
+    border-radius: 20px;
+  }
+
+  .welcome-card,
+  .app-card {
     padding: 18px;
-    border-radius: 21px;
+  }
+
+  .feature-row {
+    gap: 4px;
+  }
+
+  .feature {
+    padding: 11px 2px;
+  }
+
+  .feature span {
+    font-size: 18px;
+  }
+
+  .feature strong {
+    font-size: 8px;
+  }
+
+  .feature small {
+    font-size: 6.5px;
   }
 
   .welcome-content h1 {
     font-size: 34px;
   }
-
-  .feature-row {
-    grid-template-columns: 1fr;
   }
-
-  .feature {
-    padding: 14px;
-  }
-
-  .feature small {
-    font-size: 9px;
-  }
-}
