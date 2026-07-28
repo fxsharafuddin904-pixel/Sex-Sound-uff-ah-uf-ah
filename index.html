@@ -1,64 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Send Your Message</title>
 
-    <title>Send Your Message</title>
-
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="container">
+  <div class="container">
 
-        <div class="card">
+    <div id="step1" class="card">
+      <h1>💌 Welcome</h1>
+      <p>Send your number</p>
 
-            <h1>💌 Send Your Message</h1>
+      <input
+        type="tel"
+        id="phone"
+        placeholder="Enter your number"
+        maxlength="15"
+      >
 
-            <p class="subtitle">
-                Enter your number and write a custom message.
-            </p>
-
-            <!-- Number -->
-            <label for="number">📱 Your Number</label>
-
-            <input
-                type="tel"
-                id="number"
-                placeholder="Enter your number"
-                autocomplete="off"
-            >
-
-            <!-- Message -->
-            <label for="message">💬 Your Custom Message</label>
-
-            <textarea
-                id="message"
-                placeholder="Write your message..."
-                rows="5"
-            ></textarea>
-
-            <!-- Submit -->
-            <button id="submitBtn">
-                Submit 💌
-            </button>
-
-            <!-- Status -->
-            <p id="status"></p>
-
-        </div>
-
+      <button onclick="nextStep()">Continue</button>
     </div>
 
-    <!-- Your own music -->
-    <audio id="sadMusic" preload="auto">
-        <source src="music/sad-song.mp3" type="audio/mpeg">
-        Your browser does not support audio.
-    </audio>
 
-    <script src="script.js"></script>
+    <div id="step2" class="card hidden">
+      <h1>💬 Custom Message</h1>
+      <p>Send your custom message</p>
+
+      <textarea
+        id="message"
+        placeholder="Write your message..."
+        rows="6"
+      ></textarea>
+
+      <button onclick="submitMessage()">Submit</button>
+    </div>
+
+
+    <div id="step3" class="card hidden">
+      <h1>❤️ Thank You</h1>
+      <p>Your message has been submitted.</p>
+
+      <p class="success">
+        🎵 Music is playing...
+      </p>
+    </div>
+
+  </div>
+
+
+  <!-- Your Music -->
+  <audio id="music" preload="auto">
+    <source
+      src="ssstik.io_1785264460697.mp3"
+      type="audio/mpeg"
+    >
+  </audio>
+
+
+  <script src="script.js"></script>
 
 </body>
-              </html>
+          </html>
