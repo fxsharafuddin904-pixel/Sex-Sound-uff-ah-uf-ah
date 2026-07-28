@@ -1,177 +1,377 @@
 const countryRules = {
-  BD: { local: 11, intl: 13, code: "880", pattern: /^01\d{9}$/ },
-  IN: { local: 10, intl: 12, code: "91", pattern: /^[6-9]\d{9}$/ },
-  NP: { local: 10, intl: 12, code: "977", pattern: /^9\d{9}$/ },
-  SA: { local: 9, intl: 12, code: "966", pattern: /^5\d{8}$/ },
-  US: { local: 10, intl: 11, code: "1", pattern: /^[2-9]\d{9}$/ },
-  AE: { local: 9, intl: 12, code: "971", pattern: /^5\d{8}$/ },
-  GB: { local: 10, intl: 12, code: "44", pattern: /^1\d{9}$/ },
-  MY: { local: 9, intl: 11, code: "60", pattern: /^1\d{8}$/ },
-  SG: { local: 8, intl: 10, code: "65", pattern: /^[6-9]\d{7}$/ },
-  PK: { local: 10, intl: 12, code: "92", pattern: /^3\d{9}$/ },
-  ID: { localMin: 9, localMax: 12, intlMin: 11, intlMax: 14, code: "62", pattern: /^8\d{8,11}$/ },
-  PH: { local: 10, intl: 12, code: "63", pattern: /^9\d{9}$/ },
-  TH: { local: 9, intl: 11, code: "66", pattern: /^[6-9]\d{8}$/ },
-  JP: { local: 10, intl: 12, code: "81", pattern: /^[7-9]\d{9}$/ },
-  KR: { local: 10, intl: 12, code: "82", pattern: /^1\d{9}$/ },
-  CN: { local: 11, intl: 13, code: "86", pattern: /^1\d{10}$/ },
-  CA: { local: 10, intl: 11, code: "1", pattern: /^[2-9]\d{9}$/ },
-  AU: { local: 9, intl: 11, code: "61", pattern: /^4\d{8}$/ },
-  DE: { localMin: 10, localMax: 11, intlMin: 11, intlMax: 12, code: "49", pattern: /^1\d{9,10}$/ },
-  FR: { local: 9, intl: 11, code: "33", pattern: /^[6-7]\d{8}$/ },
-  IT: { localMin: 9, localMax: 10, intlMin: 11, intlMax: 12, code: "39", pattern: /^3\d{8,9}$/ },
-  ES: { local: 9, intl: 11, code: "34", pattern: /^[6-7]\d{8}$/ },
-  BR: { localMin: 10, localMax: 11, intlMin: 12, intlMax: 13, code: "55", pattern: /^[1-9]\d{9,10}$/ },
-  TR: { local: 10, intl: 12, code: "90", pattern: /^5\d{9}$/ },
-  QA: { local: 8, intl: 11, code: "974", pattern: /^[3-7]\d{7}$/ }
+  BD: { min: 10, max: 10, prefix: /^01/ },
+  IN: { min: 10, max: 10, prefix: /^[6-9]/ },
+  NP: { min: 10, max: 10, prefix: /^9/ },
+  SA: { min: 9, max: 9, prefix: /^5/ },
+  US: { min: 10, max: 10, prefix: /^[2-9]/ },
+  AE: { min: 9, max: 9, prefix: /^5/ },
+  GB: { min: 10, max: 10, prefix: /^[1-9]/ },
+  MY: { min: 9, max: 10, prefix: /^1/ },
+  SG: { min: 8, max: 8, prefix: /^[6-9]/ },
+  PK: { min: 10, max: 10, prefix: /^3/ },
+  ID: { min: 9, max: 12, prefix: /^8/ },
+  PH: { min: 10, max: 10, prefix: /^9/ },
+  TH: { min: 9, max: 9, prefix: /^[6-9]/ },
+  JP: { min: 10, max: 10, prefix: /^[7-9]/ },
+  KR: { min: 10, max: 10, prefix: /^1/ },
+  CN: { min: 11, max: 11, prefix: /^1/ },
+  CA: { min: 10, max: 10, prefix: /^[2-9]/ },
+  AU: { min: 9, max: 9, prefix: /^4/ },
+  DE: { min: 10, max: 11, prefix: /^[1-9]/ },
+  FR: { min: 9, max: 9, prefix: /^[6-7]/ },
+  IT: { min: 9, max: 10, prefix: /^3/ },
+  ES: { min: 9, max: 9, prefix: /^[6-7]/ },
+  BR: { min: 10, max: 11, prefix: /^[1-9]/ },
+  TR: { min: 10, max: 10, prefix: /^5/ },
+  QA: { min: 8, max: 8, prefix: /^[3-7]/ }
 };
 
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const country = document.getElementById("country");
+const phone = document.getElementById("phone");
+
+const message = document.getElementById("message");
+const messageCount = document.getElementById("messageCount");
+
+const numberError = document.getElementById("numberError");
+const messageError = document.getElementById("messageError");
+
+const music1 = document.getElementById("music1");
+const music2 = document.getElementById("music2");
+const music3 = document.getElementById("music3");
+
+const offBtn = document.getElementById("offBtn");
+
+
+/* =========================
+   SHAKE
+========================= */
+
 function shake(element) {
+
   element.classList.remove("shake");
+
   void element.offsetWidth;
+
   element.classList.add("shake");
+
 }
 
-function isValidPhone(value, rule) {
-  // +880 / +91 etc. remove
-  let number = value.replace(/\s+/g, "");
 
-  // Must contain digits only, except optional +
-  if (!/^\+?\d+$/.test(number)) {
-    return false;
-  }
+/* =========================
+   COUNTRY CHANGE
+========================= */
 
-  // Remove +
-  number = number.replace("+", "");
+country.addEventListener("change", () => {
 
-  // International format
-  if (number.startsWith(rule.code)) {
-    const localPart = number.slice(rule.code.length);
+  numberError.textContent = "";
 
-    if (rule.local) {
-      if (localPart.length !== rule.local) return false;
-      return rule.pattern.test(
-        localPart.startsWith("0") ? localPart : "0" + localPart
-      );
-    }
+  phone.value = "";
 
-    if (rule.localMin) {
-      if (
-        localPart.length < rule.localMin - 1 ||
-        localPart.length > rule.localMax - 1
-      ) {
-        return false;
-      }
+  phone.focus();
 
-      return true;
-    }
-  }
+});
 
-  // Local format
-  if (rule.local) {
-    if (number.length !== rule.local) return false;
-    return rule.pattern.test(number);
-  }
 
-  if (rule.localMin) {
-    if (
-      number.length < rule.localMin ||
-      number.length > rule.localMax
-    ) {
-      return false;
-    }
+/* =========================
+   PHONE INPUT
+========================= */
 
-    return rule.pattern.test(number);
-  }
+phone.addEventListener("input", () => {
 
-  return false;
-}
+  // Only allow digits
+  phone.value = phone.value.replace(/\D/g, "");
+
+  numberError.textContent = "";
+
+});
+
+
+/* =========================
+   STEP 1 → STEP 2
+========================= */
 
 function nextStep() {
-  const country = document.getElementById("country");
-  const phone = document.getElementById("phone");
-  const error = document.getElementById("numberError");
 
-  const selected = country.value;
+  const selectedCountry = country.value;
+
   const number = phone.value.trim();
 
-  error.textContent = "";
+  numberError.textContent = "";
 
-  // Country required
-  if (!selected) {
-    error.textContent = "Please select your country.";
+
+  /* Country required */
+
+  if (!selectedCountry) {
+
+    numberError.textContent =
+      "Please select your country first.";
+
     shake(country);
+
     return;
   }
 
-  // Number required
+
+  /* Number required */
+
   if (!number) {
-    error.textContent = "Please enter your phone number.";
+
+    numberError.textContent =
+      "Please enter your phone number.";
+
     shake(phone);
+
+    phone.focus();
+
     return;
   }
 
-  const rule = countryRules[selected];
 
-  // Validate exact country number
-  if (!rule || !isValidPhone(number, rule)) {
-    error.textContent = "Please enter a valid phone number.";
+  /* Digits only */
+
+  if (!/^\d+$/.test(number)) {
+
+    numberError.textContent =
+      "Please enter numbers only.";
+
     shake(phone);
+
     return;
   }
 
-  // Valid → Step 2
-  document.getElementById("step1").classList.add("hidden");
-  document.getElementById("step2").classList.remove("hidden");
+
+  const rule = countryRules[selectedCountry];
+
+
+  if (!rule) {
+
+    numberError.textContent =
+      "Country validation unavailable.";
+
+    shake(country);
+
+    return;
+  }
+
+
+  /* Length validation */
+
+  if (
+    number.length < rule.min ||
+    number.length > rule.max
+  ) {
+
+    numberError.textContent =
+      `Please enter a valid ${rule.min}-digit number.`;
+
+    shake(phone);
+
+    return;
+  }
+
+
+  /* Prefix validation */
+
+  if (!rule.prefix.test(number)) {
+
+    numberError.textContent =
+      "Please enter a valid phone number.";
+
+    shake(phone);
+
+    return;
+  }
+
+
+  /* Go to Step 2 */
+
+  document
+    .getElementById("step1")
+    .classList.add("hidden");
+
+  document
+    .getElementById("step2")
+    .classList.remove("hidden");
+
 }
 
+
+/* =========================
+   MESSAGE COUNTER
+========================= */
+
+if (message) {
+
+  message.addEventListener("input", () => {
+
+    const length = message.value.length;
+
+    messageCount.textContent =
+      `${length} / 500`;
+
+    messageError.textContent = "";
+
+  });
+
+}
+
+
+/* =========================
+   STEP 2 → STEP 3
+========================= */
+
 function submitMessage() {
-  const message = document.getElementById("message");
-  const error = document.getElementById("messageError");
 
-  error.textContent = "";
+  const text = message.value.trim();
 
-  if (!message.value.trim()) {
-    error.textContent = "Please write your message.";
+  messageError.textContent = "";
+
+
+  if (!text) {
+
+    messageError.textContent =
+      "Please write your message.";
+
     shake(message);
+
+    message.focus();
+
     return;
   }
 
-  document.getElementById("step2").classList.add("hidden");
-  document.getElementById("step3").classList.remove("hidden");
 
-  const music1 = document.getElementById("music1");
+  /* Hide Step 2 */
+
+  document
+    .getElementById("step2")
+    .classList.add("hidden");
+
+
+  /* Show Step 3 */
+
+  document
+    .getElementById("step3")
+    .classList.remove("hidden");
+
+
+  /* Start first music */
 
   music1.currentTime = 0;
 
   music1.play().catch(() => {
-    console.log("Music playback blocked by browser.");
+
+    console.log(
+      "Browser blocked automatic audio playback."
+    );
+
   });
+
 }
 
-function toggleMusic() {
-  const music1 = document.getElementById("music1");
-  const music2 = document.getElementById("music2");
-  const music3 = document.getElementById("music3");
-  const button = document.getElementById("offBtn");
 
-  // Stop first music
+/* =========================
+   BACK BUTTON
+========================= */
+
+function goBack() {
+
+  document
+    .getElementById("step2")
+    .classList.add("hidden");
+
+  document
+    .getElementById("step1")
+    .classList.remove("hidden");
+
+}
+
+
+/* =========================
+   OFF BUTTON
+========================= */
+
+function toggleMusic() {
+
+  /*
+    Stop first music
+  */
+
   music1.pause();
+
   music1.currentTime = 0;
 
-  // Reset 3 copies
+
+  /*
+    Reset other two
+  */
+
   music2.pause();
   music3.pause();
 
   music2.currentTime = 0;
   music3.currentTime = 0;
 
-  // Start 3 same music together
-  Promise.all([
-    music2.play(),
-    music3.play()
-  ]).catch(() => {});
 
-  button.textContent = "3× MUSIC PLAYING";
-  button.disabled = true;
-    }
+  /*
+    Start 3 copies
+    with 1 second interval
+  */
+
+  music2.play().catch(() => {});
+
+
+  setTimeout(() => {
+
+    music3.play().catch(() => {});
+
+  }, 1000);
+
+
+  /*
+    Change button
+  */
+
+  offBtn.innerHTML =
+    "<span>♫</span> 3× MUSIC PLAYING";
+
+  offBtn.disabled = true;
+
+}
+
+
+/* =========================
+   ENTER KEY
+========================= */
+
+phone.addEventListener("keydown", (event) => {
+
+  if (event.key === "Enter") {
+
+    nextStep();
+
+  }
+
+});
+
+
+/* =========================
+   TEXTAREA CTRL + ENTER
+========================= */
+
+message.addEventListener("keydown", (event) => {
+
+  if (
+    event.key === "Enter" &&
+    event.ctrlKey
+  ) {
+
+    submitMessage();
+
+  }
+
+});
