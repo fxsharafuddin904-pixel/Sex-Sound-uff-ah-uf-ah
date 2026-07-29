@@ -1071,3 +1071,39 @@ document.addEventListener(
 
   }
 );
+const searchInput = document.getElementById("countrySearch");
+const hiddenCountry = document.getElementById("country");
+const items = document.querySelectorAll(".country-item");
+
+if (searchInput) {
+
+    searchInput.addEventListener("input", function () {
+
+        let value = this.value.toLowerCase();
+
+        items.forEach(item => {
+
+            let text = item.textContent.toLowerCase();
+
+            if (text.includes(value)) {
+                item.classList.remove("hide");
+            } else {
+                item.classList.add("hide");
+            }
+
+        });
+
+    });
+
+    items.forEach(item => {
+
+        item.addEventListener("click", function () {
+
+            searchInput.value = this.textContent;
+            hiddenCountry.value = this.dataset.value;
+
+        });
+
+    });
+
+    }
