@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MessageBox — Private Message</title>
+
+  <meta name="theme-color" content="#080b1a">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Background -->
+  <div class="bg-glow glow-one"></div>
+  <div class="bg-glow glow-two"></div>
+  <div class="bg-glow glow-three"></div>
+
+
+  <!-- =========================
+       WELCOME PAGE
+  ========================== -->
+
+  <main id="welcomePage" class="page active">
+
+    <section class="welcome-card">
+
+      <div class="brand">
+
+        <div class="brand-icon">
+          💌
+        </div>
+
+        <div>
+          <div class="brand-name">
+            MessageBox
+          </div>
+
+          <div class="brand-subtitle">
+            Private Message
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="welcome-content">
+
+        <div class="welcome-badge">
+          ✨ Welcome
+        </div>
+
+
+        <h1>
+          💌 Welcome to
+          <span>SMS Booming</span>
+          Website
+        </h1>
+
+
+        <p class="welcome-description">
+          Thanks for visiting my website 💙
+          Choose an experience below and make
+          your message a little more special.
+        </p>
+
+
+        <!-- 3 items in ONE ROW -->
+
+        <div class="feature-row">
+
+          <div class="feature">
+
+            <span>💣</span>
+
+            <strong>
+              Bombing
+            </strong>
+
+            <small>
+              Warning: Please do not use this to disturb people. ⚠️
+            </small>
+
+          </div>
+
+
+          <div class="feature">
+
+            <span>💬</span>
+
+            <strong>
+              Message
+            </strong>
+
+            <small>
+              Send a custom message
+            </small>
+
+          </div>
+
+
+          <div class="feature">
+
+            <span>✨</span>
+
+            <strong>
+              Fun
+            </strong>
+
+            <small>
+              Enjoy the experience
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <button
+          class="primary-btn"
+          type="button"
+          onclick="showCategoryPage()"
+        >
+
+          <span>
+            Get Started
+          </span>
+
+          <span class="btn-arrow">
+            →
+          </span>
+
+        </button>
+
+
+        <div class="secure-note">
+          🔒 Private &amp; secure experience
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- =========================
+       CATEGORY PAGE
+  ========================== -->
+
+  <main id="categoryPage" class="page">
+
+    <section class="app-card">
+
+      <div class="top-brand">
+
+        <div class="brand-icon small">
+          💌
+        </div>
+
+        <div>
+
+          <div class="brand-name">
+            MessageBox
+          </div>
+
+          <div class="brand-subtitle">
+            Choose your experience
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="section-heading">
+
+        <div class="mini-label">
+          SELECT YOUR CATEGORY
+        </div>
+
+        <h2>
+          What would you like to do? ✨
+        </h2>
+
+        <p>
+          Pick an option below to continue.
+        </p>
+
+      </div>
+
+
+      <div class="category-list">
+
+
+        <!-- BOMBING -->
+
+        <button
+          class="category-option"
+          type="button"
+          onclick="showFunPage()"
+        >
+
+          <div class="category-icon bombing">
+            💣
+          </div>
+
+          <div class="category-text">
+
+            <strong>
+              Bombing
+            </strong>
+
+            <span>
+              Warning: Please do not use this to disturb people. ⚠️
+            </span>
+
+          </div>
+
+          <div class="category-arrow">
+            →
+          </div>
+
+        </button>
+
+
+
+        <!-- CUSTOM MESSAGE -->
+
+        <button
+          class="category-option"
+          type="button"
+          onclick="showPhonePage()"
+        >
+
+          <div class="category-icon message">
+            💬
+          </div>
+
+          <div class="category-text">
+
+            <strong>
+              Custom Message Send
+            </strong>
+
+            <span>
+              Write your own personal message
+            </span>
+
+          </div>
+
+          <div class="category-arrow">
+            →
+          </div>
+
+        </button>
+
+
+      </div>
+
+
+      <div class="secure-note">
+        🔒 Your information is handled securely
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- =========================
+       PHONE PAGE
+  ========================== -->
+
+  <main id="phonePage" class="page">
+
+    <section class="app-card">
+
+      <div class="top-brand">
+
+        <div class="brand-icon small">
+          💌
+        </div>
+
+        <div>
+
+          <div class="brand-name">
+            MessageBox
+          </div>
+
+          <div class="brand-subtitle">
+            Private Message
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="section-heading">
+
+        <div class="mini-label">
+          CUSTOM MESSAGE
+        </div>
+
+        <h2>
+          Send your message
+        </h2>
+
+        <p>
+          Select your country and enter your phone number
+          to continue.
+        </p>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="country">
+          Country
+        </label>
+
+
+        <select id="country">
+
+          <option value="">
+            Select your country
+          </option>
+
+          <option value="BD">
+            🇧🇩 Bangladesh
+          </option>
+
+          <option value="US">
+            🇺🇸 United States
+          </option>
+
+          <option value="IN">
+            🇮🇳 India
+          </option>
+
+          <option value="NP">
+            🇳🇵 Nepal
+          </option>
+
+          <option value="SA">
+            🇸🇦 Saudi Arabia
+          </option>
+
+          <option value="AE">
+            🇦🇪 United Arab Emirates
+          </option>
+
+          <option value="GB">
+            🇬🇧 United Kingdom
+          </option>
+
+          <option value="MY">
+            🇲🇾 Malaysia
+          </option>
+
+          <option value="SG">
+            🇸🇬 Singapore
+          </option>
+
+          <option value="PK">
+            🇵🇰 Pakistan
+          </option>
+
+          <option value="ID">
+            🇮🇩 Indonesia
+          </option>
+
+          <option value="PH">
+            🇵🇭 Philippines
+          </option>
+
+          <option value="TH">
+            🇹🇭 Thailand
+          </option>
+
+          <option value="JP">
+            🇯🇵 Japan
+          </option>
+
+          <option value="KR">
+            🇰🇷 South Korea
+          </option>
+
+          <option value="CN">
+            🇨🇳 China
+          </option>
+
+          <option value="CA">
+            🇨🇦 Canada
+          </option>
+
+          <option value="AU">
+            🇦🇺 Australia
+          </option>
+
+          <option value="DE">
+            🇩🇪 Germany
+          </option>
+
+          <option value="FR">
+            🇫🇷 France
+          </option>
+
+        </select>
+
+      </div>
+
+
+
+      <div class="form-group">
+
+        <label for="phone">
+          Phone number
+        </label>
+
+
+        <input
+          id="phone"
+          type="tel"
+          inputmode="tel"
+          autocomplete="tel"
+          placeholder="Enter your phone number"
+        >
+
+
+        <p
+          id="numberError"
+          class="error"
+        ></p>
+
+      </div>
+
+
+
+      <button
+        class="primary-btn"
+        type="button"
+        onclick="nextPhoneStep()"
+      >
+
+        <span>
+          Continue
+        </span>
+
+        <span class="btn-arrow">
+          →
+        </span>
+
+      </button>
+
+
+
+      <button
+        class="back-btn"
+        type="button"
+        onclick="showCategoryPage()"
+      >
+        ← Back
+      </button>
+
+
+      <div class="secure-note">
+        🔒 Your information is handled securely
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- =========================
+       CUSTOM MESSAGE PAGE
+  ========================== -->
+
+  <main id="messagePage" class="page">
+
+    <section class="app-card">
+
+      <div class="top-brand">
+
+        <div class="brand-icon small">
+          💌
+        </div>
+
+        <div>
+
+          <div class="brand-name">
+            MessageBox
+          </div>
+
+          <div class="brand-subtitle">
+            Write your message
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="section-heading">
+
+        <div class="mini-label">
+          YOUR MESSAGE
+        </div>
+
+        <h2>
+          Write something special 💙
+        </h2>
+
+        <p>
+          Type your custom message below.
+        </p>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="message">
+          Custom message
+        </label>
+
+
+        <textarea
+          id="message"
+          maxlength="500"
+          rows="7"
+          placeholder="Write your message here..."
+        ></textarea>
+
+
+        <div class="textarea-footer">
+
+          <p
+            id="messageError"
+            class="error"
+          ></p>
+
+          <span id="messageCount">
+            0 / 500
+          </span>
+
+        </div>
+
+      </div>
+
+
+
+      <button
+        class="primary-btn"
+        type="button"
+        onclick="submitCustomMessage()"
+      >
+
+        <span>
+          Confirm &amp; Submit
+        </span>
+
+        <span class="btn-arrow">
+          →
+        </span>
+
+      </button>
+
+
+
+      <button
+        class="back-btn"
+        type="button"
+        onclick="showPhonePage()"
+      >
+        ← Back
+      </button>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- =========================
+       BOMBING / FUN PAGE
+
+       NOTE:
+       NO REAL SMS IS SENT
+  ========================== -->
+
+  <main id="funPage" class="page">
+
+    <section class="app-card">
+
+      <div class="top-brand">
+
+        <div class="brand-icon small">
+          💣
+        </div>
+
+        <div>
+
+          <div class="brand-name">
+            Bombing
+          </div>
+
+          <div class="brand-subtitle">
+            Disturb your friend 🤣
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="section-heading">
+
+        <div class="mini-label">
+          Disturb your friend 🤣।
+        </div>
+
+        <h2>
+          Choose your fun level
+        </h2>
+
+        <p>
+          Select an option below. Warning: Please do not use this to disturb people. ⚠️।
+        </p>
+
+      </div>
+
+
+
+      <!-- AMOUNT -->
+
+      <div class="form-group">
+
+        <label for="funAmount">
+          Select how much you want
+        </label>
+
+
+        <select id="funAmount">
+
+          <option value="">
+            Select amount
+          </option>
+
+          <option value="5">
+            5 🎵
+          </option>
+
+          <option value="10">
+            10 🎵
+          </option>
+
+          <option value="20">
+            20 🎵
+          </option>
+
+          <option value="30">
+            30 🎵
+          </option>
+
+          <option value="40">
+            40 🎵
+          </option>
+
+          <option value="50">
+            50 🎵
+          </option>
+
+          <option value="60">
+            60 🎵
+          </option>
+
+          <option value="70">
+            70 🎵
+          </option>
+
+        </select>
+
+
+        <p
+          id="funError"
+          class="error"
+        ></p>
+
+      </div>
+
+
+
+      <!-- NUMBER INPUT FOR FUN MODE -->
+
+      <div class="form-group">
+
+        <label for="funPhone">
+          Enter phone number
+        </label>
+
+
+        <input
+          id="funPhone"
+          type="tel"
+          inputmode="tel"
+          autocomplete="tel"
+          placeholder="Enter a valid phone number"
+        >
+
+
+        <p
+          id="funPhoneError"
+          class="error"
+        ></p>
+
+      </div>
+
+
+
+      <button
+        class="primary-btn"
+        type="button"
+        onclick="startFunExperience()"
+      >
+
+        <span>
+          Start Fun Experience
+        </span>
+
+        <span class="btn-arrow">
+          🚀
+        </span>
+
+      </button>
+
+
+
+      <button
+        class="back-btn"
+        type="button"
+        onclick="showCategoryPage()"
+      >
+        ← Back
+      </button>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- =========================
+       MUSIC PAGE
+  ========================== -->
+
+  <main id="musicPage" class="page">
+
+    <section class="music-card">
+
+      <div class="music-orb">
+        🎵
+      </div>
+
+
+      <div class="mini-label">
+        EXPERIENCE COMPLETE
+      </div>
+
+
+      <h2>
+        You wanted a free custom message and bombing , right? 💌
+      </h2>
+
+
+      <p>
+        You like getting things for free, don’t you? 🤣
+Now enjoy the real fun! 🤣🤣💥
+      </p>
+
+
+      <div class="music-status">
+
+        <div class="equalizer">
+
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+
+        </div>
+
+
+        <span>
+          😅 Sad music is playing...
+        </span>
+
+      </div>
+
+
+
+      <button
+        id="offBtn"
+        class="music-btn"
+        type="button"
+        onclick="toggleMusic()"
+      >
+        🔊 OFF
+      </button>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- =========================
+       AUDIO
+  ========================== -->
+
+  <audio
+    id="music1"
+    src="ssstik.io_1785264460697.mp3"
+    preload="auto"
+  ></audio>
+
+
+  <audio
+    id="music2"
+    src="ssstik.io_1785264460697.mp3"
+    preload="auto"
+  ></audio>
+
+
+  <audio
+    id="music3"
+    src="ssstik.io_1785264460697.mp3"
+    preload="auto"
+  ></audio>
+
+
+
+  <!-- JavaScript -->
+
+  <script src="script.js"></script>
+
+</body>
+  </html>
