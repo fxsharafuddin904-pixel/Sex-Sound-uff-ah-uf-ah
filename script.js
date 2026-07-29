@@ -168,6 +168,112 @@ const countryRules = {
     max: 10,
     pattern: /^1\d{9}$/
   },
+const countryRules = {
+
+  BD: {
+    code: "880",
+    min: 11,
+    max: 11,
+    pattern: /^01\d{9}$/
+  },
+
+  US: {
+    code: "1",
+    min: 10,
+    max: 10,
+    pattern: /^[2-9]\d{9}$/
+  },
+
+  IN: {
+    code: "91",
+    min: 10,
+    max: 10,
+    pattern: /^[6-9]\d{9}$/
+  },
+
+  NP: {
+    code: "977",
+    min: 10,
+    max: 10,
+    pattern: /^9\d{9}$/
+  },
+
+  SA: {
+    code: "966",
+    min: 9,
+    max: 9,
+    pattern: /^5\d{8}$/
+  },
+
+  AE: {
+    code: "971",
+    min: 9,
+    max: 9,
+    pattern: /^5\d{8}$/
+  },
+
+  GB: {
+    code: "44",
+    min: 10,
+    max: 10,
+    pattern: /^7\d{9}$/
+  },
+
+  MY: {
+    code: "60",
+    min: 9,
+    max: 10,
+    pattern: /^1\d{8,9}$/
+  },
+
+  SG: {
+    code: "65",
+    min: 8,
+    max: 8,
+    pattern: /^[689]\d{7}$/
+  },
+
+  PK: {
+    code: "92",
+    min: 10,
+    max: 10,
+    pattern: /^3\d{9}$/
+  },
+
+  ID: {
+    code: "62",
+    min: 9,
+    max: 12,
+    pattern: /^8\d{8,11}$/
+  },
+
+  PH: {
+    code: "63",
+    min: 10,
+    max: 10,
+    pattern: /^9\d{9}$/
+  },
+
+  TH: {
+    code: "66",
+    min: 9,
+    max: 9,
+    pattern: /^[689]\d{8}$/
+  },
+
+  JP: {
+    code: "81",
+    min: 10,
+    max: 10,
+    pattern: /^7\d{9}$/
+  },
+
+  KR: {
+    code: "82",
+    min: 10,
+    max: 10,
+    pattern: /^1\d{9}$/
+  },
 
   CN: {
     code: "86",
@@ -202,6 +308,146 @@ const countryRules = {
     min: 9,
     max: 9,
     pattern: /^[67]\d{8}$/
+  },
+
+  LK: {
+    code: "94",
+    min: 9,
+    max: 9,
+    pattern: /^7\d{8}$/
+  },
+
+  EG: {
+    code: "20",
+    min: 10,
+    max: 10,
+    pattern: /^1\d{9}$/
+  },
+
+  YE: {
+    code: "967",
+    min: 9,
+    max: 9,
+    pattern: /^7\d{8}$/
+  },
+
+  UZ: {
+    code: "998",
+    min: 9,
+    max: 9,
+    pattern: /^9\d{8}$/
+  },
+
+  AF: {
+    code: "93",
+    min: 9,
+    max: 9,
+    pattern: /^7\d{8}$/
+  },
+
+  LB: {
+    code: "961",
+    min: 8,
+    max: 8,
+    pattern: /^[137]\d{7}$/
+  },
+
+  RU: {
+    code: "7",
+    min: 10,
+    max: 10,
+    pattern: /^9\d{9}$/
+  },
+
+  KZ: {
+    code: "7",
+    min: 10,
+    max: 10,
+    pattern: /^7\d{9}$/
+  },
+
+  ET: {
+    code: "251",
+    min: 9,
+    max: 9,
+    pattern: /^9\d{8}$/
+  },
+
+  OM: {
+    code: "968",
+    min: 8,
+    max: 8,
+    pattern: /^9\d{7}$/
+  },
+
+  QA: {
+    code: "974",
+    min: 8,
+    max: 8,
+    pattern: /^[3567]\d{7}$/
+  },
+
+  KW: {
+    code: "965",
+    min: 8,
+    max: 8,
+    pattern: /^[569]\d{7}$/
+  },
+
+  BH: {
+    code: "973",
+    min: 8,
+    max: 8,
+    pattern: /^[369]\d{7}$/
+  },
+
+  IQ: {
+    code: "964",
+    min: 10,
+    max: 10,
+    pattern: /^7\d{9}$/
+  },
+
+  IR: {
+    code: "98",
+    min: 10,
+    max: 10,
+    pattern: /^9\d{9}$/
+  },
+
+  TR: {
+    code: "90",
+    min: 10,
+    max: 10,
+    pattern: /^5\d{9}$/
+  },
+
+  IT: {
+    code: "39",
+    min: 10,
+    max: 10,
+    pattern: /^3\d{9}$/
+  },
+
+  ES: {
+    code: "34",
+    min: 9,
+    max: 9,
+    pattern: /^[67]\d{8}$/
+  },
+
+  NL: {
+    code: "31",
+    min: 9,
+    max: 9,
+    pattern: /^6\d{8}$/
+  },
+
+  BE: {
+    code: "32",
+    min: 9,
+    max: 9,
+    pattern: /^4\d{8}$/
   }
 
 };
