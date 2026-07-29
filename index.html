@@ -1,865 +1,791 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>MessageBox — Private Message</title>
+    <title>MessageBox — Private Message</title>
 
-  <meta name="theme-color" content="#080b1a">
+    <meta name="theme-color" content="#080b1a">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- Background -->
-  <div class="bg-glow glow-one"></div>
-  <div class="bg-glow glow-two"></div>
-  <div class="bg-glow glow-three"></div>
+    <!-- Background -->
+    <div class="bg-glow glow-one"></div>
+    <div class="bg-glow glow-two"></div>
+    <div class="bg-glow glow-three"></div>
 
+    <!-- =========================
+         WELCOME PAGE
+    ========================== -->
 
-  <!-- =========================
-       WELCOME PAGE
-  ========================== -->
+    <main id="welcomePage" class="page active">
 
-  <main id="welcomePage" class="page active">
+        <section class="welcome-card">
 
-    <section class="welcome-card">
+            <!-- Top Header -->
 
-      <div class="brand">
+            <div class="top-header">
 
-        <div class="brand-icon">
-          💌
-        </div>
+                <div class="brand">
 
-        <div>
-          <div class="brand-name">
-            MessageBox
-          </div>
+                    <div class="brand-icon">
+                        <i class="fa-regular fa-message"></i>
+                    </div>
 
-          <div class="brand-subtitle">
-            Private Message
-          </div>
-        </div>
+                    <div>
 
-      </div>
+                        <div class="brand-name">
+                            MessageBox
+                        </div>
 
+                        <div class="brand-subtitle">
+                            Private Message
+                        </div>
 
-      <div class="welcome-content">
+                    </div>
 
-        <div class="welcome-badge">
-          ✨ Welcome
-        </div>
+                </div>
 
+                <a href="https://t.me/Smart_Method_Owner"
+                    target="_blank"
+                    class="admin-box">
 
-        <h1>
-          💌 Welcome to
-          <span>SMS Booming</span>
-          Website
-        </h1>
+                    <span class="admin-text">
+                        Admin ID
+                    </span>
 
+                    <div class="telegram-btn">
+                        <i class="fa-brands fa-telegram"></i>
+                    </div>
 
-        <p class="welcome-description">
-          Thanks for visiting my website 💙
-          Choose an experience below and make
-          your message a little more special.
-        </p>
+                </a>
 
+            </div>
 
-        <!-- 3 items in ONE ROW -->
+            <!-- Welcome -->
 
-        <div class="feature-row">
+            <div class="welcome-content">
 
-          <div class="feature">
+                <div class="welcome-badge">
+                    ✨ WELCOME
+                </div>
 
-            <span>💣</span>
+                <h1>
+                    Welcome to
+                    <span>MessageBox</span>
+                </h1>
 
-            <strong>
-              Bombing
-            </strong>
+                <p class="welcome-description">
+                    Your all-in-one platform for powerful messaging tools,
+                    built for speed, fun, and impact.
+                </p>
+                <!-- Feature Cards -->
 
-            <small>
-              Warning: Please do not use this to disturb people. ⚠️
-            </small>
+                <div class="feature-row">
 
-          </div>
+                    <div class="feature">
 
+                        <span>💣</span>
 
-          <div class="feature">
+                        <strong>Bombing</strong>
 
-            <span>💬</span>
+                        <small>
+                            Warning: Please do not use this to disturb people.
+                        </small>
 
-            <strong>
-              Message
-            </strong>
+                    </div>
 
-            <small>
-              Send a custom message
-            </small>
+                    <div class="feature">
 
-          </div>
+                        <span>💬</span>
 
+                        <strong>Message</strong>
 
-          <div class="feature">
+                        <small>
+                            Create your own custom message.
+                        </small>
 
-            <span>✨</span>
+                    </div>
 
-            <strong>
-              Fun
-            </strong>
+                    <div class="feature">
 
-            <small>
-              Enjoy the experience
-            </small>
+                        <span>✨</span>
 
-          </div>
+                        <strong>Fun</strong>
 
-        </div>
+                        <small>
+                            Enjoy the premium experience.
+                        </small>
 
+                    </div>
 
-        <button
-          class="primary-btn"
-          type="button"
-          onclick="showCategoryPage()"
-        >
+                </div>
 
-          <span>
-            Get Started
-          </span>
+                <!-- Get Started Button -->
 
-          <span class="btn-arrow">
-            →
-          </span>
+                <button
+                    class="primary-btn"
+                    type="button"
+                    onclick="showCategoryPage()">
 
-        </button>
+                    <span>Get Started</span>
 
+                    <span class="btn-arrow">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </span>
 
-        <div class="secure-note">
-          🔒 Private &amp; secure experience
-        </div>
+                </button>
 
-      </div>
+                <div class="secure-note">
+                    🔒 Secure • Fast • Premium Experience
+                </div>
 
-    </section>
+            </div>
 
-  </main>
+        </section>
 
+    </main>
 
+    <!-- =========================
+         CATEGORY PAGE
+    ========================== -->
 
-  <!-- =========================
-       CATEGORY PAGE
-  ========================== -->
+    <main id="categoryPage" class="page">
 
-  <main id="categoryPage" class="page">
+        <section class="app-card">
 
-    <section class="app-card">
+            <!-- Top Header -->
 
-      <div class="top-brand">
+            <div class="top-header">
 
-        <div class="brand-icon small">
-          💌
-        </div>
+                <div class="brand">
 
-        <div>
+                    <div class="brand-icon small">
+                        <i class="fa-regular fa-message"></i>
+                    </div>
 
-          <div class="brand-name">
-            MessageBox
-          </div>
+                    <div>
 
-          <div class="brand-subtitle">
-            Choose your experience
-          </div>
+                        <div class="brand-name">
+                            MessageBox
+                        </div>
 
-        </div>
+                        <div class="brand-subtitle">
+                            Choose Your Category
+                        </div>
 
-      </div>
+                    </div>
 
+                </div>
 
-      <div class="section-heading">
+                <a href="https://t.me/Smart_Method_Owner"
+                    target="_blank"
+                    class="admin-box">
 
-        <div class="mini-label">
-          SELECT YOUR CATEGORY
-        </div>
+                    <span class="admin-text">
+                        Admin ID
+                    </span>
 
-        <h2>
-          What would you like to do? ✨
-        </h2>
+                    <div class="telegram-btn">
+                        <i class="fa-brands fa-telegram"></i>
+                    </div>
 
-        <p>
-          Pick an option below to continue.
-        </p>
+                </a>
 
-      </div>
+            </div>
 
+            <div class="section-heading">
 
-      <div class="category-list">
+                <div class="mini-label">
+                    SELECT CATEGORY
+                </div>
 
+                <h2>
+                    Choose Your Experience ✨
+                </h2>
 
-        <!-- BOMBING -->
+                <p>
+                    Select one option below to continue.
+                </p>
 
-        <button
-          class="category-option"
-          type="button"
-          onclick="showFunPage()"
-        >
+            </div>
 
-          <div class="category-icon bombing">
-            💣
-          </div>
+            <div class="category-list">
+              <!-- Bombing -->
 
-          <div class="category-text">
+                <button
+                    class="category-option"
+                    type="button"
+                    onclick="showFunPage()">
 
-            <strong>
-              Bombing
-            </strong>
+                    <div class="category-icon bombing">
+                        💣
+                    </div>
 
-            <span>
-              Warning: Please do not use this to disturb people. ⚠️
-            </span>
+                    <div class="category-text">
 
-          </div>
+                        <strong>Bombing</strong>
 
-          <div class="category-arrow">
-            →
-          </div>
+                        <span>
+                            Disturb your friend 🤣
+                        </span>
 
-        </button>
+                    </div>
 
+                    <div class="category-arrow">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
 
+                </button>
 
-        <!-- CUSTOM MESSAGE -->
+                <!-- Custom Message -->
 
-        <button
-          class="category-option"
-          type="button"
-          onclick="showPhonePage()"
-        >
+                <button
+                    class="category-option"
+                    type="button"
+                    onclick="showPhonePage()">
 
-          <div class="category-icon message">
-            💬
-          </div>
+                    <div class="category-icon message">
+                        💬
+                    </div>
 
-          <div class="category-text">
+                    <div class="category-text">
 
-            <strong>
-              Custom Message Send
-            </strong>
+                        <strong>Custom Message</strong>
 
-            <span>
-              Write your own personal message
-            </span>
+                        <span>
+                            Write and send your own message
+                        </span>
 
-          </div>
+                    </div>
 
-          <div class="category-arrow">
-            →
-          </div>
+                    <div class="category-arrow">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
 
-        </button>
+                </button>
 
+            </div>
 
-      </div>
+            <div class="secure-note">
+                🔒 Your information is handled securely
+            </div>
 
+        </section>
 
-      <div class="secure-note">
-        🔒 Your information is handled securely
-      </div>
+    </main>
 
-    </section>
+    <!-- =========================
+         PHONE PAGE
+    ========================== -->
 
-  </main>
+    <main id="phonePage" class="page">
 
+        <section class="app-card">
 
+            <!-- Top Header -->
 
-  <!-- =========================
-       PHONE PAGE
-  ========================== -->
+            <div class="top-header">
 
-  <main id="phonePage" class="page">
+                <div class="brand">
 
-    <section class="app-card">
+                    <div class="brand-icon small">
+                        <i class="fa-regular fa-message"></i>
+                    </div>
 
-      <div class="top-brand">
+                    <div>
 
-        <div class="brand-icon small">
-          💌
-        </div>
+                        <div class="brand-name">
+                            MessageBox
+                        </div>
 
-        <div>
+                        <div class="brand-subtitle">
+                            Private Message
+                        </div>
 
-          <div class="brand-name">
-            MessageBox
-          </div>
+                    </div>
 
-          <div class="brand-subtitle">
-            Private Message
-          </div>
+                </div>
 
-        </div>
+                <a href="https://t.me/Smart_Method_Owner"
+                   target="_blank"
+                   class="admin-box">
 
-      </div>
+                    <span class="admin-text">
+                        Admin ID
+                    </span>
 
+                    <div class="telegram-btn">
+                        <i class="fa-brands fa-telegram"></i>
+                    </div>
 
-      <div class="section-heading">
+                </a>
 
-        <div class="mini-label">
-          CUSTOM MESSAGE
-        </div>
+            </div>
 
-        <h2>
-          Send your message
-        </h2>
+            <div class="section-heading">
 
-        <p>
-          Select your country and enter your phone number
-          to continue.
-        </p>
+                <div class="mini-label">
+                    CUSTOM MESSAGE
+                </div>
 
-      </div>
+                <h2>
+                    Send Your Message
+                </h2>
 
+                <p>
+                    Select your country and enter your phone number to continue.
+                </p>
 
-      <div class="form-group">
+            </div>
+            <div class="form-group">
 
-        <label for="country">
-          Country
-        </label>
+                <label for="country">
+                    Country
+                </label>
 
+                <select id="country">
 
-        <select id="country">
+                    <option value="">
+                        Select your country
+                    </option>
 
-          <option value="">
-            Select your country
-          </option>
+                    <option value="BD">🇧🇩 Bangladesh</option>
+                    <option value="US">🇺🇸 United States</option>
+                    <option value="IN">🇮🇳 India</option>
+                    <option value="NP">🇳🇵 Nepal</option>
+                    <option value="SA">🇸🇦 Saudi Arabia</option>
+                    <option value="AE">🇦🇪 United Arab Emirates</option>
+                    <option value="GB">🇬🇧 United Kingdom</option>
+                    <option value="MY">🇲🇾 Malaysia</option>
+                    <option value="SG">🇸🇬 Singapore</option>
+                    <option value="PK">🇵🇰 Pakistan</option>
+                    <option value="ID">🇮🇩 Indonesia</option>
+                    <option value="PH">🇵🇭 Philippines</option>
+                    <option value="TH">🇹🇭 Thailand</option>
+                    <option value="JP">🇯🇵 Japan</option>
+                    <option value="KR">🇰🇷 South Korea</option>
+                    <option value="CN">🇨🇳 China</option>
+                    <option value="CA">🇨🇦 Canada</option>
+                    <option value="AU">🇦🇺 Australia</option>
+                    <option value="DE">🇩🇪 Germany</option>
+                    <option value="FR">🇫🇷 France</option>
 
-          <option value="BD">
-            🇧🇩 Bangladesh
-          </option>
+                </select>
 
-          <option value="US">
-            🇺🇸 United States
-          </option>
+            </div>
 
-          <option value="IN">
-            🇮🇳 India
-          </option>
+            <div class="form-group">
 
-          <option value="NP">
-            🇳🇵 Nepal
-          </option>
+                <label for="phone">
+                    Phone Number
+                </label>
 
-          <option value="SA">
-            🇸🇦 Saudi Arabia
-          </option>
+                <input
+                    id="phone"
+                    type="tel"
+                    inputmode="tel"
+                    autocomplete="tel"
+                    placeholder="Enter your phone number">
 
-          <option value="AE">
-            🇦🇪 United Arab Emirates
-          </option>
+                <p id="numberError" class="error"></p>
 
-          <option value="GB">
-            🇬🇧 United Kingdom
-          </option>
+            </div>
 
-          <option value="MY">
-            🇲🇾 Malaysia
-          </option>
+            <button
+                class="primary-btn"
+                type="button"
+                onclick="nextPhoneStep()">
 
-          <option value="SG">
-            🇸🇬 Singapore
-          </option>
+                <span>Continue</span>
 
-          <option value="PK">
-            🇵🇰 Pakistan
-          </option>
+                <span class="btn-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </span>
 
-          <option value="ID">
-            🇮🇩 Indonesia
-          </option>
+            </button>
 
-          <option value="PH">
-            🇵🇭 Philippines
-          </option>
+            <button
+                class="back-btn"
+                type="button"
+                onclick="showCategoryPage()">
+                ← Back
+            </button>
 
-          <option value="TH">
-            🇹🇭 Thailand
-          </option>
+            <div class="secure-note">
+                🔒 Your information is handled securely
+            </div>
 
-          <option value="JP">
-            🇯🇵 Japan
-          </option>
+        </section>
 
-          <option value="KR">
-            🇰🇷 South Korea
-          </option>
+    </main>
 
-          <option value="CN">
-            🇨🇳 China
-          </option>
+    <!-- =========================
+         MESSAGE PAGE
+    ========================== -->
 
-          <option value="CA">
-            🇨🇦 Canada
-          </option>
+    <main id="messagePage" class="page">
 
-          <option value="AU">
-            🇦🇺 Australia
-          </option>
+        <section class="app-card">
 
-          <option value="DE">
-            🇩🇪 Germany
-          </option>
+            <!-- Top Header -->
 
-          <option value="FR">
-            🇫🇷 France
-          </option>
+            <div class="top-header">
 
-        </select>
+                <div class="brand">
 
-      </div>
+                    <div class="brand-icon small">
+                        <i class="fa-regular fa-message"></i>
+                    </div>
 
+                    <div>
 
+                        <div class="brand-name">
+                            MessageBox
+                        </div>
 
-      <div class="form-group">
+                        <div class="brand-subtitle">
+                            Write Your Message
+                        </div>
 
-        <label for="phone">
-          Phone number
-        </label>
+                    </div>
 
+                </div>
 
-        <input
-          id="phone"
-          type="tel"
-          inputmode="tel"
-          autocomplete="tel"
-          placeholder="Enter your phone number"
-        >
+                <a href="https://t.me/Smart_Method_Owner"
+                   target="_blank"
+                   class="admin-box">
 
+                    <span class="admin-text">
+                        Admin ID
+                    </span>
 
-        <p
-          id="numberError"
-          class="error"
-        ></p>
+                    <div class="telegram-btn">
+                        <i class="fa-brands fa-telegram"></i>
+                    </div>
 
-      </div>
+                </a>
 
+            </div>
+            <div class="section-heading">
 
+                <div class="mini-label">
+                    YOUR MESSAGE
+                </div>
 
-      <button
-        class="primary-btn"
-        type="button"
-        onclick="nextPhoneStep()"
-      >
+                <h2>
+                    Write Something Special 💙
+                </h2>
 
-        <span>
-          Continue
-        </span>
+                <p>
+                    Type your custom message below.
+                </p>
 
-        <span class="btn-arrow">
-          →
-        </span>
+            </div>
 
-      </button>
+            <div class="form-group">
 
+                <label for="message">
+                    Custom Message
+                </label>
 
+                <textarea
+                    id="message"
+                    maxlength="500"
+                    rows="7"
+                    placeholder="Write your message here..."></textarea>
 
-      <button
-        class="back-btn"
-        type="button"
-        onclick="showCategoryPage()"
-      >
-        ← Back
-      </button>
+                <div class="textarea-footer">
 
+                    <p id="messageError" class="error"></p>
 
-      <div class="secure-note">
-        🔒 Your information is handled securely
-      </div>
+                    <span id="messageCount">
+                        0 / 500
+                    </span>
 
-    </section>
+                </div>
 
-  </main>
+            </div>
 
+            <button
+                class="primary-btn"
+                type="button"
+                onclick="submitCustomMessage()">
 
+                <span>
+                    Confirm &amp; Submit
+                </span>
 
-  <!-- =========================
-       CUSTOM MESSAGE PAGE
-  ========================== -->
+                <span class="btn-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </span>
 
-  <main id="messagePage" class="page">
+            </button>
 
-    <section class="app-card">
+            <button
+                class="back-btn"
+                type="button"
+                onclick="showPhonePage()">
+                ← Back
+            </button>
 
-      <div class="top-brand">
+        </section>
 
-        <div class="brand-icon small">
-          💌
-        </div>
+    </main>
 
-        <div>
+    <!-- =========================
+         FUN PAGE
+    ========================== -->
 
-          <div class="brand-name">
-            MessageBox
-          </div>
+    <main id="funPage" class="page">
 
-          <div class="brand-subtitle">
-            Write your message
-          </div>
+        <section class="app-card">
 
-        </div>
+            <div class="top-header">
 
-      </div>
+                <div class="brand">
 
+                    <div class="brand-icon small">
+                        💣
+                    </div>
 
-      <div class="section-heading">
+                    <div>
 
-        <div class="mini-label">
-          YOUR MESSAGE
-        </div>
+                        <div class="brand-name">
+                            Bombing
+                        </div>
 
-        <h2>
-          Write something special 💙
-        </h2>
+                        <div class="brand-subtitle">
+                            Disturb Your Friend
+                        </div>
 
-        <p>
-          Type your custom message below.
-        </p>
+                    </div>
 
-      </div>
+                </div>
 
+                <a href="https://t.me/Smart_Method_Owner"
+                   target="_blank"
+                   class="admin-box">
 
-      <div class="form-group">
+                    <span class="admin-text">
+                        Admin ID
+                    </span>
 
-        <label for="message">
-          Custom message
-        </label>
+                    <div class="telegram-btn">
+                        <i class="fa-brands fa-telegram"></i>
+                    </div>
 
+                </a>
 
-        <textarea
-          id="message"
-          maxlength="500"
-          rows="7"
-          placeholder="Write your message here..."
-        ></textarea>
+            </div>
 
+            <div class="section-heading">
 
-        <div class="textarea-footer">
+                <div class="mini-label">
+                    FUN MODE
+                </div>
 
-          <p
-            id="messageError"
-            class="error"
-          ></p>
+                <h2>
+                    Choose Your Fun Level
+                </h2>
 
-          <span id="messageCount">
-            0 / 500
-          </span>
+                <p>
+                    Select an amount and enter a phone number to continue.
+                </p>
 
-        </div>
+            </div>
+            <div class="form-group">
 
-      </div>
+                <label for="funAmount">
+                    Select Amount
+                </label>
 
+                <select id="funAmount">
 
+                    <option value="">Select amount</option>
+                    <option value="5">5 🎵</option>
+                    <option value="10">10 🎵</option>
+                    <option value="20">20 🎵</option>
+                    <option value="30">30 🎵</option>
+                    <option value="40">40 🎵</option>
+                    <option value="50">50 🎵</option>
+                    <option value="60">60 🎵</option>
+                    <option value="70">70 🎵</option>
 
-      <button
-        class="primary-btn"
-        type="button"
-        onclick="submitCustomMessage()"
-      >
+                </select>
 
-        <span>
-          Confirm &amp; Submit
-        </span>
+                <p id="funError" class="error"></p>
 
-        <span class="btn-arrow">
-          →
-        </span>
+            </div>
 
-      </button>
+            <div class="form-group">
 
+                <label for="funPhone">
+                    Phone Number
+                </label>
 
+                <input
+                    id="funPhone"
+                    type="tel"
+                    inputmode="tel"
+                    autocomplete="tel"
+                    placeholder="Enter phone number">
 
-      <button
-        class="back-btn"
-        type="button"
-        onclick="showPhonePage()"
-      >
-        ← Back
-      </button>
+                <p id="funPhoneError" class="error"></p>
 
-    </section>
+            </div>
 
-  </main>
+            <button
+                class="primary-btn"
+                type="button"
+                onclick="startFunExperience()">
 
+                <span>Start Fun</span>
 
+                <span class="btn-arrow">
+                    🚀
+                </span>
 
-  <!-- =========================
-       BOMBING / FUN PAGE
+            </button>
 
-       NOTE:
-       NO REAL SMS IS SENT
-  ========================== -->
+            <button
+                class="back-btn"
+                type="button"
+                onclick="showCategoryPage()">
+                ← Back
+            </button>
 
-  <main id="funPage" class="page">
+        </section>
 
-    <section class="app-card">
+    </main>
 
-      <div class="top-brand">
+    <!-- =========================
+         MUSIC PAGE
+    ========================== -->
 
-        <div class="brand-icon small">
-          💣
-        </div>
+    <main id="musicPage" class="page">
 
-        <div>
+        <section class="music-card">
 
-          <div class="brand-name">
-            Bombing
-          </div>
+            <div class="top-header">
 
-          <div class="brand-subtitle">
-            Disturb your friend 🤣
-          </div>
+                <div class="brand">
 
-        </div>
+                    <div class="brand-icon small">
+                        🎵
+                    </div>
 
-      </div>
+                    <div>
 
+                        <div class="brand-name">
+                            MessageBox
+                        </div>
 
-      <div class="section-heading">
+                        <div class="brand-subtitle">
+                            Completed
+                        </div>
 
-        <div class="mini-label">
-          Disturb your friend 🤣।
-        </div>
+                    </div>
 
-        <h2>
-          Choose your fun level
-        </h2>
+                </div>
 
-        <p>
-          Select an option below. Warning: Please do not use this to disturb people. ⚠️।
-        </p>
+                <a href="https://t.me/Smart_Method_Owner"
+                   target="_blank"
+                   class="admin-box">
 
-      </div>
+                    <span class="admin-text">
+                        Admin ID
+                    </span>
 
+                    <div class="telegram-btn">
+                        <i class="fa-brands fa-telegram"></i>
+                    </div>
 
+                </a>
 
-      <!-- AMOUNT -->
+            </div>
 
-      <div class="form-group">
+            <div class="music-orb">
+                🎵
+            </div>
 
-        <label for="funAmount">
-          Select how much you want
-        </label>
+            <div class="mini-label">
+                EXPERIENCE COMPLETE
+            </div>
+            <h2>
+                You wanted a free custom message & bombing, right? 💌
+            </h2>
 
+            <p>
+                You like getting things for free, don't you? 🤣<br>
+                Now enjoy the real fun! 🤣🤣💥
+            </p>
 
-        <select id="funAmount">
+            <div class="music-status">
 
-          <option value="">
-            Select amount
-          </option>
+                <div class="equalizer">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                </div>
 
-          <option value="5">
-            5 🎵
-          </option>
+                <span>
+                    😅 Sad music is playing...
+                </span>
 
-          <option value="10">
-            10 🎵
-          </option>
+            </div>
 
-          <option value="20">
-            20 🎵
-          </option>
+            <button
+                id="offBtn"
+                class="music-btn"
+                type="button"
+                onclick="toggleMusic()">
 
-          <option value="30">
-            30 🎵
-          </option>
+                🔊 OFF
 
-          <option value="40">
-            40 🎵
-          </option>
+            </button>
 
-          <option value="50">
-            50 🎵
-          </option>
+        </section>
 
-          <option value="60">
-            60 🎵
-          </option>
+    </main>
 
-          <option value="70">
-            70 🎵
-          </option>
+    <!-- AUDIO -->
 
-        </select>
+    <audio
+        id="music1"
+        src="ssstik.io_1785264460697.mp3"
+        preload="auto">
+    </audio>
 
+    <audio
+        id="music2"
+        src="ssstik.io_1785264460697.mp3"
+        preload="auto">
+    </audio>
 
-        <p
-          id="funError"
-          class="error"
-        ></p>
+    <audio
+        id="music3"
+        src="ssstik.io_1785264460697.mp3"
+        preload="auto">
+    </audio>
 
-      </div>
-
-
-
-      <!-- NUMBER INPUT FOR FUN MODE -->
-
-      <div class="form-group">
-
-        <label for="funPhone">
-          Enter phone number
-        </label>
-
-
-        <input
-          id="funPhone"
-          type="tel"
-          inputmode="tel"
-          autocomplete="tel"
-          placeholder="Enter a valid phone number"
-        >
-
-
-        <p
-          id="funPhoneError"
-          class="error"
-        ></p>
-
-      </div>
-
-
-
-      <button
-        class="primary-btn"
-        type="button"
-        onclick="startFunExperience()"
-      >
-
-        <span>
-          Start Fun Experience
-        </span>
-
-        <span class="btn-arrow">
-          🚀
-        </span>
-
-      </button>
-
-
-
-      <button
-        class="back-btn"
-        type="button"
-        onclick="showCategoryPage()"
-      >
-        ← Back
-      </button>
-
-    </section>
-
-  </main>
-
-
-
-  <!-- =========================
-       MUSIC PAGE
-  ========================== -->
-
-  <main id="musicPage" class="page">
-
-    <section class="music-card">
-
-      <div class="music-orb">
-        🎵
-      </div>
-
-
-      <div class="mini-label">
-        EXPERIENCE COMPLETE
-      </div>
-
-
-      <h2>
-        You wanted a free custom message and bombing , right? 💌
-      </h2>
-
-
-      <p>
-        You like getting things for free, don’t you? 🤣
-Now enjoy the real fun! 🤣🤣💥
-      </p>
-
-
-      <div class="music-status">
-
-        <div class="equalizer">
-
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-
-        </div>
-
-
-        <span>
-          😅 Sad music is playing...
-        </span>
-
-      </div>
-
-
-
-      <button
-        id="offBtn"
-        class="music-btn"
-        type="button"
-        onclick="toggleMusic()"
-      >
-        🔊 OFF
-      </button>
-
-    </section>
-
-  </main>
-
-
-
-  <!-- =========================
-       AUDIO
-  ========================== -->
-
-  <audio
-    id="music1"
-    src="ssstik.io_1785264460697.mp3"
-    preload="auto"
-  ></audio>
-
-
-  <audio
-    id="music2"
-    src="ssstik.io_1785264460697.mp3"
-    preload="auto"
-  ></audio>
-
-
-  <audio
-    id="music3"
-    src="ssstik.io_1785264460697.mp3"
-    preload="auto"
-  ></audio>
-
-
-
-  <!-- JavaScript -->
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
-  </html>
+
+</html>
