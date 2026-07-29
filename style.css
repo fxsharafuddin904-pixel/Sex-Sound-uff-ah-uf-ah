@@ -1,0 +1,991 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #070914;
+  --card: rgba(18, 22, 43, 0.78);
+  --border: rgba(255,255,255,.10);
+  --text: #f8f9ff;
+  --muted: #a7aec7;
+  --primary: #7c5cff;
+  --secondary: #00d9ff;
+  --danger: #ff5577;
+}
+
+html,
+body {
+  min-height: 100%;
+  font-family: "Inter", sans-serif;
+  background:
+    radial-gradient(
+      circle at 15% 15%,
+      rgba(124,92,255,.18),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 80%,
+      rgba(0,217,255,.12),
+      transparent 30%
+    ),
+    var(--bg);
+  color: var(--text);
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+
+/* =========================
+   BACKGROUND GLOW
+========================= */
+
+.bg-glow {
+  position: fixed;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: .28;
+  pointer-events: none;
+}
+
+.glow-one {
+  background: #754cff;
+  top: -130px;
+  left: -100px;
+}
+
+.glow-two {
+  background: #00d9ff;
+  bottom: -150px;
+  right: -100px;
+}
+
+.glow-three {
+  background: #ff3d9a;
+  top: 40%;
+  right: -220px;
+}
+
+
+/* =========================
+   PAGES
+========================= */
+
+.page {
+  width: 100%;
+  max-width: 720px;
+  display: none;
+  position: relative;
+  z-index: 2;
+}
+
+.page.active {
+  display: block;
+  animation: pageIn .55s ease both;
+}
+
+@keyframes pageIn {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.welcome-card,
+.app-card,
+.music-card {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  background: var(--card);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.45),
+    inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+.welcome-card {
+  padding: 34px;
+}
+
+.app-card {
+  padding: 32px;
+}
+
+.music-card {
+  padding: 55px 35px;
+  text-align: center;
+}
+
+
+/* =========================
+   BRAND
+========================= */
+
+.brand,
+.top-brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.top-brand {
+  margin-bottom: 38px;
+}
+
+.brand-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+
+  display: grid;
+  place-items: center;
+
+  font-size: 28px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #7c5cff,
+      #00cfff
+    );
+
+  box-shadow:
+    0 12px 30px rgba(89,76,255,.35);
+}
+
+.brand-icon.small {
+  width: 48px;
+  height: 48px;
+  border-radius: 15px;
+  font-size: 23px;
+}
+
+.brand-name {
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.brand-subtitle {
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 3px;
+}
+
+
+/* =========================
+   WELCOME
+========================= */
+
+.welcome-content {
+  padding: 70px 15px 25px;
+  text-align: center;
+}
+
+.welcome-badge,
+.mini-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #bdb3ff;
+
+  background: rgba(124,92,255,.12);
+
+  border: 1px solid rgba(124,92,255,.22);
+
+  border-radius: 999px;
+
+  padding: 8px 14px;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+}
+
+.welcome-content h1 {
+  max-width: 620px;
+  margin: 25px auto 18px;
+
+  font-size: clamp(38px, 7vw, 62px);
+
+  line-height: 1.05;
+
+  letter-spacing: -2.5px;
+}
+
+.welcome-content h1 span {
+  display: block;
+
+  background:
+    linear-gradient(
+      90deg,
+      #a991ff,
+      #35ddff,
+      #ff78c8
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+.welcome-description {
+  max-width: 550px;
+
+  margin: auto;
+
+  color: var(--muted);
+
+  line-height: 1.8;
+
+  font-size: 14px;
+}
+
+
+/* =========================
+   FEATURE ROW
+========================= */
+
+/*
+   Important:
+   3 cards stay in ONE ROW
+*/
+
+.feature-row {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 12px;
+
+  margin: 35px 0;
+}
+
+.feature {
+  min-width: 0;
+
+  padding: 18px 10px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 18px;
+
+  background:
+    rgba(255,255,255,.025);
+
+  text-align: center;
+}
+
+.feature span {
+  display: block;
+
+  font-size: 24px;
+
+  margin-bottom: 10px;
+}
+
+.feature strong {
+  display: block;
+
+  font-size: 12px;
+
+  white-space: nowrap;
+}
+
+.feature small {
+  display: block;
+
+  margin-top: 6px;
+
+  color: var(--muted);
+
+  font-size: 9px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+  font-family: inherit;
+}
+
+.primary-btn {
+  width: 100%;
+
+  min-height: 58px;
+
+  border: 0;
+
+  border-radius: 17px;
+
+  color: white;
+
+  cursor: pointer;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  background:
+    linear-gradient(
+      135deg,
+      #7758ff,
+      #22bfff
+    );
+
+  box-shadow:
+    0 15px 35px rgba(93,83,255,.28),
+    inset 0 1px 0 rgba(255,255,255,.25);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  transition: .25s ease;
+}
+
+.primary-btn:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 20px 45px rgba(93,83,255,.4);
+}
+
+.primary-btn:active {
+  transform: scale(.98);
+}
+
+.btn-arrow {
+  font-size: 20px;
+}
+
+.back-btn {
+  width: 100%;
+
+  margin-top: 13px;
+
+  padding: 13px;
+
+  border: 0;
+
+  background: transparent;
+
+  color: var(--muted);
+
+  cursor: pointer;
+
+  font-size: 12px;
+}
+
+.back-btn:hover {
+  color: white;
+}
+
+.secure-note {
+  text-align: center;
+
+  color: #747c98;
+
+  font-size: 10px;
+
+  margin-top: 22px;
+}
+
+
+/* =========================
+   HEADING
+========================= */
+
+.section-heading {
+  margin-bottom: 30px;
+}
+
+.section-heading h2 {
+  margin-top: 14px;
+
+  font-size:
+    clamp(27px, 5vw, 38px);
+
+  letter-spacing: -1px;
+}
+
+.section-heading p {
+  margin-top: 10px;
+
+  color: var(--muted);
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================
+   CATEGORY
+========================= */
+
+.category-list {
+  display: grid;
+
+  gap: 14px;
+}
+
+.category-option {
+  width: 100%;
+
+  padding: 18px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 20px;
+
+  background:
+    rgba(255,255,255,.035);
+
+  color: white;
+
+  display: flex;
+
+  align-items: center;
+
+  text-align: left;
+
+  gap: 15px;
+
+  cursor: pointer;
+
+  transition: .25s ease;
+}
+
+.category-option:hover {
+  transform: translateY(-3px);
+
+  border-color:
+    rgba(124,92,255,.55);
+
+  background:
+    rgba(124,92,255,.08);
+}
+
+.category-icon {
+  width: 52px;
+  height: 52px;
+
+  flex-shrink: 0;
+
+  border-radius: 16px;
+
+  display: grid;
+
+  place-items: center;
+
+  font-size: 25px;
+}
+
+.category-icon.bombing {
+  background:
+    linear-gradient(
+      135deg,
+      #ff4d78,
+      #ff8b3d
+    );
+}
+
+.category-icon.message {
+  background:
+    linear-gradient(
+      135deg,
+      #735cff,
+      #16d8ff
+    );
+}
+
+.category-text {
+  flex: 1;
+}
+
+.category-text strong {
+  display: block;
+
+  font-size: 14px;
+}
+
+.category-text span {
+  display: block;
+
+  margin-top: 6px;
+
+  color: var(--muted);
+
+  font-size: 11px;
+}
+
+.category-arrow {
+  color: #9b91ff;
+
+  font-size: 23px;
+}
+
+
+/* =========================
+   FORMS
+========================= */
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: #d9dded;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+select,
+input,
+textarea {
+  width: 100%;
+
+  outline: none;
+
+  border:
+    1px solid rgba(255,255,255,.09);
+
+  border-radius: 16px;
+
+  background:
+    rgba(4,7,18,.65);
+
+  color: white;
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  transition: .25s ease;
+}
+
+select,
+input {
+  height: 56px;
+
+  padding: 0 16px;
+}
+
+textarea {
+  padding: 16px;
+
+  resize: vertical;
+
+  min-height: 150px;
+
+  line-height: 1.6;
+}
+
+select:focus,
+input:focus,
+textarea:focus {
+  border-color: #8067ff;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(124,92,255,.1);
+}
+
+select option {
+  background: #101426;
+
+  color: white;
+}
+
+.error {
+  color: #ff6c8c;
+
+  font-size: 11px;
+
+  margin-top: 8px;
+
+  min-height: 15px;
+}
+
+.textarea-footer {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+#messageCount {
+  color: #737b96;
+
+  font-size: 10px;
+}
+
+
+/* =========================
+   MUSIC PAGE
+========================= */
+
+.music-orb {
+  width: 105px;
+  height: 105px;
+
+  margin:
+    0 auto 30px;
+
+  border-radius: 50%;
+
+  display: grid;
+
+  place-items: center;
+
+  font-size: 42px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #7358ff,
+      #18d9ff
+    );
+
+  box-shadow:
+    0 0 0 15px
+    rgba(124,92,255,.06),
+
+    0 0 60px
+    rgba(93,83,255,.35);
+
+  animation:
+    pulse 2.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(1.06);
+
+    box-shadow:
+      0 0 0 25px
+      rgba(124,92,255,.03),
+
+      0 0 80px
+      rgba(93,83,255,.5);
+  }
+}
+
+.music-card h2 {
+  margin: 17px 0 10px;
+
+  font-size: 30px;
+}
+
+.music-card > p {
+  color: var(--muted);
+
+  font-size: 13px;
+}
+
+.music-status {
+  margin: 30px auto;
+
+  padding: 17px;
+
+  border-radius: 17px;
+
+  border: 1px solid var(--border);
+
+  background:
+    rgba(255,255,255,.025);
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 12px;
+
+  color: #c4c9dc;
+
+  font-size: 11px;
+}
+
+.equalizer {
+  display: flex;
+
+  align-items: center;
+
+  gap: 3px;
+
+  height: 20px;
+}
+
+.equalizer i {
+  width: 3px;
+
+  height: 8px;
+
+  border-radius: 5px;
+
+  background: #6c8dff;
+
+  animation:
+    equalize .8s
+    ease-in-out
+    infinite alternate;
+}
+
+.equalizer i:nth-child(2) {
+  animation-delay: .15s;
+}
+
+.equalizer i:nth-child(3) {
+  animation-delay: .3s;
+}
+
+.equalizer i:nth-child(4) {
+  animation-delay: .45s;
+}
+
+.equalizer i:nth-child(5) {
+  animation-delay: .6s;
+}
+
+@keyframes equalize {
+  to {
+    height: 20px;
+  }
+}
+
+.music-btn {
+  width: 100%;
+
+  height: 55px;
+
+  border-radius: 16px;
+
+  border:
+    1px solid rgba(255,255,255,.1);
+
+  background:
+    rgba(255,255,255,.05);
+
+  color: white;
+
+  cursor: pointer;
+
+  font-weight: 700;
+
+  transition: .25s;
+}
+
+.music-btn:hover {
+  background:
+    rgba(255,255,255,.09);
+}
+
+.music-btn:disabled {
+  opacity: .65;
+
+  cursor: default;
+}
+
+
+/* =========================
+   SHAKE
+========================= */
+
+.shake {
+  animation:
+    shake .35s ease;
+}
+
+@keyframes shake {
+  0%,100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-7px);
+  }
+
+  75% {
+    transform: translateX(7px);
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  body {
+    padding: 14px;
+
+    align-items: center;
+  }
+
+  .welcome-card,
+  .app-card,
+  .music-card {
+    border-radius: 24px;
+  }
+
+  .welcome-card {
+    padding: 22px;
+  }
+
+  .app-card {
+    padding: 22px;
+  }
+
+  .welcome-content {
+    padding:
+      55px 3px 15px;
+  }
+
+  .welcome-content h1 {
+    font-size: 39px;
+
+    letter-spacing: -1.8px;
+  }
+
+
+  /*
+    Keep Bombing / Message / Fun
+    in ONE horizontal row
+  */
+
+  .feature-row {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 7px;
+  }
+
+  .feature {
+    padding: 13px 4px;
+
+    border-radius: 15px;
+  }
+
+  .feature span {
+    font-size: 20px;
+
+    margin-bottom: 7px;
+  }
+
+  .feature strong {
+    font-size: 9px;
+
+    white-space: nowrap;
+  }
+
+  .feature small {
+    font-size: 7px;
+
+    line-height: 1.35;
+  }
+
+  .top-brand {
+    margin-bottom: 28px;
+  }
+
+  .music-card {
+    padding:
+      45px 22px;
+  }
+
+  .music-status {
+    font-size: 10px;
+  }
+}
+
+
+/* =========================
+   VERY SMALL SCREEN
+========================= */
+
+@media (max-width: 360px) {
+
+  body {
+    padding: 9px;
+  }
+
+  .welcome-card,
+  .app-card,
+  .music-card {
+    border-radius: 20px;
+  }
+
+  .welcome-card,
+  .app-card {
+    padding: 18px;
+  }
+
+  .feature-row {
+    gap: 4px;
+  }
+
+  .feature {
+    padding: 11px 2px;
+  }
+
+  .feature span {
+    font-size: 18px;
+  }
+
+  .feature strong {
+    font-size: 8px;
+  }
+
+  .feature small {
+    font-size: 6.5px;
+  }
+
+  .welcome-content h1 {
+    font-size: 34px;
+  }
+  }
